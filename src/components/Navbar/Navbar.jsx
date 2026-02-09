@@ -1,5 +1,3 @@
-// Mathew
-
 import { useContext } from "react";
 import { UserContext } from "../../contexts/UserContext";
 import { Link } from "react-router";
@@ -23,10 +21,10 @@ const Navbar = () => {
           <>
             <li>{`Welcome back ${user.username}`}</li>
             <li>
-              <Link to="/beers/new">New Beer</Link>
+              <Link to="/beer/new">New Beer</Link>
             </li>
             <li>
-              <Link to="/beers">Beers</Link>
+              <Link to="/beer">Beers</Link>
             </li>
             <li>
               <Link to="/" onClick={handleLogOut}>
