@@ -1,5 +1,3 @@
-// Thomas
-
 import { Link } from 'react-router';
 
 const BeerList = (props) => {
