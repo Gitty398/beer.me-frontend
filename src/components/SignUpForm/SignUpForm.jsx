@@ -1,5 +1,3 @@
-// Mathew
-
 import { useState, useContext } from "react";
 import { useNavigate } from "react-router";
 import { signUp } from "../../services/authService";
