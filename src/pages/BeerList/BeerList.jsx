@@ -4,7 +4,7 @@ const BeerList = (props) => {
   return (
     <main>
       {props.beers.map((beer) => (
-        <Link key={beer._id} to={`/beers/${beer._id}`}>
+        <Link key={beer._id} to={`/beer/${beer._id}`}>
           <article>
             <header>
               <h2>{beer.name}</h2>
