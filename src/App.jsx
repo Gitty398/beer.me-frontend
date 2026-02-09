@@ -9,7 +9,7 @@ import LandingPage from './components/LandingPage/LandingPage';
 import Dashboard from './components/Dashboard/Dashboard';
 import { UserContext } from "./contexts/UserContext";
 import BeerList from './pages/BeerList/BeerList';
-// import BeerDetail from './pages/BeerDetail/BeerDetail';
+import BeerDetail from './pages/BeerDetail/BeerDetail';
 // import BeerForm from './pages/BeerForm/BeerForm';
 
 
@@ -81,7 +81,8 @@ function App() {
         <Route path='/' element={user ? <Dashboard /> : <LandingPage />} />
         {user ? (
           <>
-            <Route path='/beer' element={<BeerList beers={beers} />} />
+            <Route path='/beer' element={<BeerList beers={beers}/>} />
+            <Route path='/beer/:beerId' element={<BeerDetail />} />
           </>
         ) : (
           <>
