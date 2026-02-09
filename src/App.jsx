@@ -8,7 +8,7 @@ import SignInForm from './components/SignInForm/SignInForm';
 import LandingPage from './components/LandingPage/LandingPage';
 import Dashboard from './components/Dashboard/Dashboard';
 import { UserContext } from "./contexts/UserContext";
-// import BeerList from './pages/BeerList/BeerList';
+import BeerList from './pages/BeerList/BeerList';
 // import BeerDetail from './pages/BeerDetail/BeerDetail';
 // import BeerForm from './pages/BeerForm/BeerForm';
 
@@ -19,8 +19,14 @@ function App() {
   const navigate = useNavigate();
 
   useEffect(() => {
+    const fetchBeers = async () => {
+      const beersData = await beerService.index();
 
-  }, []);
+      setBeers(beersData);
+    }
+
+    if (user) fetchBeers();
+  }, [user]);
 
   return (
     <>
@@ -29,7 +35,7 @@ function App() {
         <Route path='/' element={user ? <Dashboard /> : <LandingPage />} />
         {user ? (
           <>
-                     
+            <Route path='/beer' element={<BeerList beers={beers}/>} />
           </>
         ) : (
           <>
@@ -39,7 +45,6 @@ function App() {
         )}
         
       </Routes>
-      <h1>Hello world!</h1>
     </>
   )
 }

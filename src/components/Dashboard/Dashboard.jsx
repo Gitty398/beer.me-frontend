@@ -1,5 +1,3 @@
-// Mathew
-
 import { useContext, useState, useEffect, use } from "react";
 import { UserContext } from "../../contexts/UserContext";
 import { getAllUsers } from "../../services/userService";
