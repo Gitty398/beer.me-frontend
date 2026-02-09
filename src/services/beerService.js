@@ -1,4 +1,4 @@
-const BASE_URL = `${import.meta.env.VITE_BACKEND_SERVER_URL}/beer`;
+const BASE_URL = `${import.meta.env.VITE_BACK_END_SERVER_URL}/beer`;
 
 
 // Index for Beers
