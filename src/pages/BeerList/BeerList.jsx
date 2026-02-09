@@ -13,7 +13,6 @@ const BeerList = (props) => {
                 ${new Date(beer.createdAt).toLocaleDateString()}`}
               </p>
             </header>
-            <p>{beer.location.address}</p>
           </article>
         </Link>
       ))}
