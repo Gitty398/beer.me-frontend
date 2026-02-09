@@ -1,12 +1,13 @@
 import './App.css'
 import { useContext, useState, useEffect } from 'react'
 import { Routes, Route, useNavigate } from 'react-router';
-// import * as beerService from './services/beerService';
-// import Navbar from './components/Navbar/Navbar';
-// import SignUpForm from './components/SignUpForm/SignUpForm';
-// import SignInForm from './components/SignInForm/SignInForm';
-// import LandingPage from './components/LandingPage/LandingPage';
-// import Dashboard from './components/Dashboard/Dashboard';
+import * as beerService from './services/beerService';
+import Navbar from './components/Navbar/Navbar';
+import SignUpForm from './components/SignUpForm/SignUpForm';
+import SignInForm from './components/SignInForm/SignInForm';
+import LandingPage from './components/LandingPage/LandingPage';
+import Dashboard from './components/Dashboard/Dashboard';
+import { UserContext } from "./contexts/UserContext";
 // import BeerList from './pages/BeerList/BeerList';
 // import BeerDetail from './pages/BeerDetail/BeerDetail';
 // import BeerForm from './pages/BeerForm/BeerForm';
@@ -14,7 +15,8 @@ import { Routes, Route, useNavigate } from 'react-router';
 
 function App() {
   const [beers, setBeers] = useState([]);
-  // const navigate = useNavigate();
+  const { user } = useContext(UserContext);
+  const navigate = useNavigate();
 
   useEffect(() => {
 
@@ -22,10 +24,21 @@ function App() {
 
   return (
     <>
-      {/* <Navbar />
+      <Navbar />
       <Routes>
+        <Route path='/' element={user ? <Dashboard /> : <LandingPage />} />
+        {user ? (
+          <>
+                     
+          </>
+        ) : (
+          <>
+            <Route path='/sign-up' element={<SignUpForm />} />
+            <Route path='/sign-in' element={<SignInForm />} />
+          </>
+        )}
         
-      </Routes> */}
+      </Routes>
       <h1>Hello world!</h1>
     </>
   )
