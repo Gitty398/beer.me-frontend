@@ -14,8 +14,8 @@ const BeerDetail = ({ handleDeleteBeer }) => {
 
     useEffect(() => {
         const fetchBeer = async () => {
-        const beerData = await beerService.show(beerId);
-        setBeer(beerData);
+            const beerData = await beerService.show(beerId);
+            setBeer(beerData);
         };
 
         fetchBeer();
@@ -23,7 +23,7 @@ const BeerDetail = ({ handleDeleteBeer }) => {
 
     if (!beer) return <main>Loading...</main>;
 
-    return(
+    return (
         <main>
             <section>
                 <header>
@@ -38,12 +38,12 @@ const BeerDetail = ({ handleDeleteBeer }) => {
                 <div>
                     {beer.location.map((loc, index) => (
                         <div key={loc._id}>
-                                <h3>Name: {beer.location[index].name}</h3>
-                                <p>Address: {beer.location[index].address}</p>
-                                <p>Price: {beer.location[index].beerPrice}</p>
-                                <p>Rating: {beer.location[index].beerRating}</p>
-                                <p>Notes: {beer.location[index].notes}</p>
-                                <p>Last Updated on {new Date(loc.createdAt).toLocaleDateString()}</p>
+                            <h3>Name: {beer.location[index].name}</h3>
+                            <p>Address: {beer.location[index].address}</p>
+                            <p>Price: {beer.location[index].beerPrice}</p>
+                            <p>Rating: {beer.location[index].beerRating}</p>
+                            <p>Notes: {beer.location[index].notes}</p>
+                            <p>Last Updated on {new Date(loc.createdAt).toLocaleDateString()}</p>
                         </div>
                     ))}
                     <button onClick={handleEditButton}>Edit Beer</button>

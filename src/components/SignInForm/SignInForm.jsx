@@ -32,7 +32,7 @@ const SignInForm = () => {
     <main>
       <h1>Sign In</h1>
       <p>{message}</p>
-      <form autoComplete='off' onSubmit={handleSubmit}>
+      <form className="auth-page" autoComplete='off' onSubmit={handleSubmit}>
         <div>
           <label htmlFor='email'>Username:</label>
           <input

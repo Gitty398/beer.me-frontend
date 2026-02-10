@@ -21,11 +21,8 @@ const Dashboard = () => {
       <p>
         Other Users
       </p>
-      <ul>
-        {userList.map(u => 
-          <li key={u._id}>
-             <Link to={`/users/${u._id}/beer`}> {u.username}</Link>
-          </li>)}
+      <ul id="user-ul">
+        {users.map(u => <li id="user-card" key={u._id}>{u.username}</li>)}
       </ul>
     </main>
   );

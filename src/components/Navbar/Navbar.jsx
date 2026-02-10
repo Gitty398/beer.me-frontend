@@ -11,7 +11,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav>
+    <nav id="nav-section">
       <ul>
         <li>
           <Link to="/">Home</Link>
