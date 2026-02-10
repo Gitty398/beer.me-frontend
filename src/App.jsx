@@ -34,8 +34,9 @@ function App() {
       if (newBeer.err) {
         throw new Error(newBeer.err);
       }
+
       setBeers((prev) => [...prev, newBeer]);
-      navigate(`/beer/${newBeer._id}`);
+      navigate(`/beer/${newBeer.beer._id}`);
 
     } catch (error) {
       console.log(error)
@@ -59,7 +60,7 @@ function App() {
 
   const handleEditBeer = async (formData, beerId) => {
     try {
-      const selectedBeer = await beerService.selectedBeer(formData, beerId);
+      const selectedBeer = await beerService.updateBeer(formData, beerId);
       if (selectedBeer.err) {
         throw new Error(selectedBeer.err)
       }
@@ -95,7 +96,7 @@ function App() {
             />
             <Route
               path="/beer/:beerId/edit"
-              element={<BeerForm handleEditBeer={handleDeleteBeer}/>}
+              element={<BeerForm handleEditBeer={handleEditBeer}/>}
             />
           </>
         ) : (
