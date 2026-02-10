@@ -1,20 +1,11 @@
-import { Link } from 'react-router';
+import BeerCard from "../../components/BeerCard/BeerCard";
 
-const BeerList = (props) => {
+const BeerList = ({beers}) => {
+  
   return (
     <main>
-      {props.beers.map((beer) => (
-        <Link key={beer._id} to={`/beer/${beer._id}`}>
-          <article>
-            <header>
-              <h2>{beer.name}</h2>
-              <p>
-                {`${beer.owner.username} posted on
-                ${new Date(beer.createdAt).toLocaleDateString()}`}
-              </p>
-            </header>
-          </article>
-        </Link>
+      {beers.map((beer) => (
+        <BeerCard beer={beer}/>
       ))}
     </main>
   );
