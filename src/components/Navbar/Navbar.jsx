@@ -19,7 +19,6 @@ const Navbar = () => {
 
         {user ? (
           <>
-            <li>{`Welcome back ${user.username}`}</li>
             <li>
               <Link to="/beer/new">New Beer</Link>
             </li>

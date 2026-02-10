@@ -1,10 +1,12 @@
 import { useContext, useState, useEffect, use } from "react";
 import { UserContext } from "../../contexts/UserContext";
 import { getAllUsers } from "../../services/userService";
+import { Link } from 'react-router'
 
 const Dashboard = () => {
   const { user } = useContext(UserContext);
   const [users, setUsers] = useState([])
+  const userList = users.filter((users) => users._id !== user._id)
 
   useEffect(()=>{
     const fetchData = async () =>{
@@ -17,10 +19,13 @@ const Dashboard = () => {
     <main>
       <h1>Welcome, {user.username}</h1>
       <p>
-        This is the dashboard page where you can see a list of all the users
+        Other Users
       </p>
       <ul>
-        {users.map(u => <li key={u._id}>{u.username}</li>)}
+        {userList.map(u => 
+          <li key={u._id}>
+             <Link to={`/users/${u._id}/beer`}> {u.username}</Link>
+          </li>)}
       </ul>
     </main>
   );
