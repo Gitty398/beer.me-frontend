@@ -36,7 +36,18 @@ function App() {
         {user ? (
           <>
             <Route path='/beer' element={<BeerList beers={beers}/>} />
-            <Route path='/beer/:beerId' element={<BeerDetail />} />
+            <Route 
+              path="/beer/new"
+              element={<BeerForm handleAddBeer={handleAddBeer} />}
+            />
+            <Route
+              path="/beer/:beerId"
+              element={<BeerDetail handleDeleteBeer={handleDeleteBeer} />}
+            />
+            <Route
+              path="/beer/:beerId/edit"
+              element={<BeerForm handleEditBeer={handleDeleteBeer}/>}
+            />
           </>
         ) : (
           <>
