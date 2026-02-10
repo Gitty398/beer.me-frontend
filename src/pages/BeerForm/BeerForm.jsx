@@ -127,3 +127,5 @@ const BeerForm = ({ handleAddBeer, handleEditBeer }) => {
         </main>
     )
 }
+
+export default BeerForm;
