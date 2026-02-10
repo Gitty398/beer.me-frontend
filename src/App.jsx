@@ -11,6 +11,7 @@ import { UserContext } from "./contexts/UserContext";
 import BeerList from './pages/BeerList/BeerList';
 import BeerDetail from './pages/BeerDetail/BeerDetail';
 import BeerForm from './pages/BeerForm/BeerForm';
+import LocationForm from './pages/LocationForm/LocationForm';
 import UserBeerList from './pages/UsersBeerList/UsersBeerList'
 
 
@@ -74,6 +75,51 @@ function App() {
     }
   }
 
+  const handleAddLocation = async (formData, beerId) => {
+    try {
+      const selectedBeer = await beerService.createLocation(formData, beerId);
+      if (selectedBeer.err) {
+        throw new Error(selectedBeer.err)
+      }
+
+      setBeers(beers.map((b) => (b._id === beerId ? selectedBeer : b)));
+      navigate(`/beer/${beerId}`)
+
+    } catch (error) {
+      console.log(error)
+    }
+  };
+
+  const handleDeleteLocation = async (beerId) => {
+    try {
+      const deletedBeer = await beerService.deleteBeer(beerId);
+      if (deletedBeer.err) {
+        throw new Error(deletedBeer.err);
+      }
+
+      setBeers(beers.filter((beer) => beer._id !== beerId));
+      navigate("/beer")
+
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  const handleEditLocation = async (formData, beerId) => {
+    try {
+      const selectedBeer = await beerService.updateBeer(formData, beerId);
+      if (selectedBeer.err) {
+        throw new Error(selectedBeer.err)
+      }
+
+      setBeers(beers.map((b) => (b._id === beerId ? selectedBeer : b)));
+      navigate(`/beer/${beerId}`)
+
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
 
 
   return (
@@ -93,11 +139,28 @@ function App() {
             />
             <Route
               path="/beer/:beerId"
-              element={<BeerDetail handleDeleteBeer={handleDeleteBeer} />}
+              element={<BeerDetail 
+                handleDeleteBeer={handleDeleteBeer} 
+                handleAddLocation={handleAddLocation}
+              />}
             />
             <Route
               path="/beer/:beerId/edit"
               element={<BeerForm handleEditBeer={handleEditBeer}/>}
+            />
+            <Route 
+              path="/beer/:beerId/location/new"
+              element={<LocationForm 
+                handleAddLocation={handleAddLocation}
+                />}
+            />
+            <Route
+              path="/beer/:beerId/location/:locationId"
+              element={<BeerDetail handleDeleteLocation={handleDeleteLocation} />}
+            />
+            <Route
+              path="/beer/:beerId/location/:locationId/edit"
+              element={<LocationForm handleEditLocation={handleEditLocation}/>}
             />
             <Route
               path="/users/:userId/beer"

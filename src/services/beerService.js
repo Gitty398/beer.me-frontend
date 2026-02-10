@@ -2,7 +2,6 @@ const BASE_URL = `${import.meta.env.VITE_BACK_END_SERVER_URL}/beer`;
 
 
 // Index for Beers
-
 export const index = async () => {
     try {
         const res = await fetch(BASE_URL, {
@@ -20,7 +19,6 @@ export const index = async () => {
 };
 
 // Show Beer
-
 export const show = async (beerId) => {
     try {
         const res = await fetch(`${BASE_URL}/${beerId}`, {
@@ -39,8 +37,6 @@ export const show = async (beerId) => {
 
 
 // Create Beer
-
-
 export const create = async (formData) => {
     try {
         const res = await fetch(BASE_URL, {
@@ -62,7 +58,6 @@ export const create = async (formData) => {
 
 
 // Delete Beer
-
 export const deleteBeer = async (beerId) => {
     try {
         const res = await fetch(`${BASE_URL}/${beerId}`, {
@@ -80,7 +75,6 @@ export const deleteBeer = async (beerId) => {
 };
 
 // Update Beer
-
 export const updateBeer = async (beer, beerId) => {
     try {
         const res = await fetch(`${BASE_URL}/${beerId}/`, {
@@ -98,55 +92,39 @@ export const updateBeer = async (beer, beerId) => {
     }
 };
 
-// export const addComment = async (comment, beerId) => {
-//     try {
-//         const res = await fetch(`${BASE_URL}/${beerId}/locations/`, {
-//             method: "POST",
-//             headers: {
-//                 "Content-Type": "application/json",
-//                 Authorization: `Bearer ${localStorage.getItem("token")}`,
-//             },
-//             body: JSON.stringify(comment),
-//         });
+// Show Location
+export const showLocation = async (beerId, locationId) => {
+    try {
+        const res = await fetch(`${BASE_URL}/${beerId}/location/${locationId}`, {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+        });
 
-//         const data = res.json();
+        const data = await res.json();
 
-//         return data;
-//     } catch (error) {
-//         throw new Error(error.message);
-//     }
-// };
+        return data;
+    } catch (error) {
+        throw new Error(error.message);
+    }
+};
 
-// export const deleteComment = async (commentId, beerId) => {
-//     try {
-//         const res = await fetch(`${BASE_URL}/${beerId}/comments/${commentId}`, {
-//             method: "DELETE",
-//             headers: {
-//                 Authorization: `Bearer ${localStorage.getItem("token")}`,
-//             },
-//         });
-//         const data = res.json();
+// Create Location
+export const createLocation = async (formData, beerId) => {
+    try {
+        const res = await fetch(`${BASE_URL}/${beerId}/location`, {
+            method: "POST",
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem("token")}`,
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(formData),
+        });
 
-//         return data;
-//     } catch (error) {
-//         throw new Error(error.message);
-//     }
-// };
-
-// export const updateComment = async (commentId, beerId, comment) => {
-//     try {
-//         const res = await fetch(`${BASE_URL}/${beerId}/beers/${commentId}`, {
-//             method: "PUT",
-//             headers: {
-//                 Authorization: `Bearer ${localStorage.getItem("token")}`,
-//                 "Content-Type": 'application/json'
-//             },
-//             body: JSON.stringify(comment)
-//         });
-//         const data = res.json();
-
-//         return data;
-//     } catch (error) {
-//         throw new Error(error.message);
-//     }
-// };
+        const data = await res.json();
+        console.log(data);
+        return data;
+    } catch (error) {
+        throw new Error(error.message);
+    }
+};
