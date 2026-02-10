@@ -1,4 +1,4 @@
-import { useContext, useState, useEffect, use } from "react";
+import { useContext, useState, useEffect } from "react";
 import { UserContext } from "../../contexts/UserContext";
 import { getAllUsers } from "../../services/userService";
 import { Link } from 'react-router'
@@ -8,10 +8,10 @@ const Dashboard = () => {
   const [users, setUsers] = useState([])
   const userList = users.filter((users) => users._id !== user._id)
 
-  useEffect(()=>{
-    const fetchData = async () =>{
-        const allUsers = await getAllUsers()
-        setUsers(allUsers.users)
+  useEffect(() => {
+    const fetchData = async () => {
+      const allUsers = await getAllUsers()
+      setUsers(allUsers.users)
     }
     fetchData()
   }, [])
@@ -22,7 +22,7 @@ const Dashboard = () => {
         Other Users
       </p>
       <ul id="user-ul">
-        {users.map(u => <li id="user-card" key={u._id}>{u.username}</li>)}
+        {userList.map(u => <li id="user-card" key={u._id}>{u.username}</li>)}
       </ul>
     </main>
   );
