@@ -10,7 +10,7 @@ import Dashboard from './components/Dashboard/Dashboard';
 import { UserContext } from "./contexts/UserContext";
 import BeerList from './pages/BeerList/BeerList';
 import BeerDetail from './pages/BeerDetail/BeerDetail';
-// import BeerForm from './pages/BeerForm/BeerForm';
+import BeerForm from './pages/BeerForm/BeerForm';
 
 
 function App() {
