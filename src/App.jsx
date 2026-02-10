@@ -29,7 +29,7 @@ function App() {
 
     if (user) fetchBeers();
   }, [user]);
-
+  
   const handleAddBeer = async (formData) => {
     try {
       const newBeer = await beerService.create(formData);
@@ -142,6 +142,7 @@ function App() {
               element={<BeerDetail 
                 handleDeleteBeer={handleDeleteBeer} 
                 handleAddLocation={handleAddLocation}
+                user={user}
               />}
             />
             <Route

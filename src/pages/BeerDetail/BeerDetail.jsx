@@ -1,9 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router';
 import * as beerService from '../../services/beerService';
-// import BeerForm from '../BeerForm/BeerForm';
 
-const BeerDetail = ({ handleDeleteBeer, handleDeleteLocation }) => {
+const BeerDetail = ({ handleDeleteBeer, handleDeleteLocation, user }) => {
     const navigate = useNavigate()
     const [beer, setBeer] = useState(null);
     const { beerId } = useParams();
@@ -19,7 +18,6 @@ const BeerDetail = ({ handleDeleteBeer, handleDeleteLocation }) => {
     const handleEditLocationButton = (locationId) => {
         navigate(`/beer/${beerId}/location/${locationId}/edit`)
     }
-
 
     useEffect(() => {
         const fetchBeer = async () => {
@@ -43,9 +41,13 @@ const BeerDetail = ({ handleDeleteBeer, handleDeleteLocation }) => {
                         {`${beer.owner.username} posted on
                         ${new Date(beer.createdAt).toLocaleDateString()}`}
                     </p>
-                    <button onClick={handleAddLocationButton}>Add Location</button>
-                    <button onClick={handleEditBeerButton}>Edit Beer</button>
-                    <button onClick={() => handleDeleteBeer(beer._id)}>Delete Beer</button>
+                    {beer.owner._id === user._id && (
+                        <>
+                        <button onClick={handleAddLocationButton}>Add Location</button>
+                        <button onClick={handleEditBeerButton}>Edit Beer</button>
+                        <button onClick={() => handleDeleteBeer(beer._id)}>Delete Beer</button>
+                        </>
+                    )}
                 </header>
                 <div>
                     {beer.location.map((loc, index) => (
