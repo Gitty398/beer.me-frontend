@@ -58,8 +58,12 @@ const BeerDetail = ({ handleDeleteBeer, handleDeleteLocation, user }) => {
                                 <p>Rating: {beer.location[index].beerRating}</p>
                                 <p>Notes: {beer.location[index].notes}</p>
                                 <p>Last Updated on {new Date(loc.createdAt).toLocaleDateString()}</p>
-                            <button onClick={() => handleEditLocationButton(loc._id)}>Edit Location</button>
-                            <button onClick={() => handleDeleteLocation(loc._id)}>Delete Location</button>
+                            {beer.owner._id === user._id && (
+                                <>
+                                <button onClick={() => handleEditLocationButton(loc._id)}>Edit Location</button>
+                                <button onClick={() => handleDeleteLocation(loc._id)}>Delete Location</button>
+                                </>
+                            )}
                         </div>
                     ))}
                 </div>
