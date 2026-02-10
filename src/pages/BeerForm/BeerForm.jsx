@@ -32,24 +32,7 @@ const BeerForm = ({ handleAddBeer, handleEditBeer }) => {
     }, [beerId]);
 
     const handleChange = (event) => {
-        const { name, value } = event.target
-        if (!name.includes('.')) {
-            // top-level field
-            setFormData((prev) => ({
-                ...prev,
-                [name]: value
-            }));
-            return;
-        }
-
-        const [parent, child] = name.split('.')
-        setFormData((prev) => ({
-            ...prev,
-            [parent]: {
-                ...prev[parent],
-                [child]: value
-            }
-        }));
+        setFormData({ ...formData, [event.target.name]: event.target.value });
     };
 
     const handleSubmit = (event) => {
@@ -93,53 +76,7 @@ const BeerForm = ({ handleAddBeer, handleEditBeer }) => {
                 >
                     <option value="Lager">Lager</option>
                     <option value="Ale">Ale</option>
-                </select>
-                <label htmlFor="location-name-input">Location Name</label>
-                <input
-                    type="text"
-                    id="location-name-input"
-                    name="location.name"
-                    value={formData.location[0].name}
-                    onChange={handleChange}
-                />
-                <label htmlFor="location-address-input">Location Address</label>
-                <input
-                    type="text"
-                    id="location-address-input"
-                    name="location.address"
-                    value={formData.location[0].address}
-                    onChange={handleChange}
-                />
-                <label htmlFor="beer-price-input">Beer Price</label>
-                <input
-                    required
-                    type="number"
-                    id="beer-price-input"
-                    name="location.beerPrice"
-                    value={formData.location[0].beerPrice}
-                    onChange={handleChange}
-                />
-                <label htmlFor="beer-rating-input">Beer Rating</label>
-                <select
-                    required
-                    id="beer-rating-input"
-                    name="locaton.beerRating"
-                    value={formData.location[0].beerRating}
-                    onChange={handleChange}
-                >
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                </select>
-                <label htmlFor="notes-input">Notes</label>
-                <textarea
-                    id="notes-input"
-                    name="location.notes"
-                    value={formData.location[0].notes}
-                    onChange={handleChange}
-                />
+                </select>                
                 <button type="submit">Beer Me</button>
             </form>
         </main>
