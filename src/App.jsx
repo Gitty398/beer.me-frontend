@@ -11,6 +11,7 @@ import { UserContext } from "./contexts/UserContext";
 import BeerList from './pages/BeerList/BeerList';
 import BeerDetail from './pages/BeerDetail/BeerDetail';
 import BeerForm from './pages/BeerForm/BeerForm';
+import UserBeerList from './pages/UsersBeerList/UsersBeerList'
 
 
 function App() {
@@ -97,6 +98,10 @@ function App() {
             <Route
               path="/beer/:beerId/edit"
               element={<BeerForm handleEditBeer={handleEditBeer}/>}
+            />
+            <Route
+              path="/users/:userId/beer"
+              element={<UserBeerList beers={beers} />}
             />
           </>
         ) : (

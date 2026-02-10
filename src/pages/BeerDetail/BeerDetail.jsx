@@ -3,16 +3,13 @@ import { useNavigate, useParams } from 'react-router';
 import * as beerService from '../../services/beerService';
 // import BeerForm from '../BeerForm/BeerForm';
 
-const BeerDetail = ({ handleDelete }) => {
+const BeerDetail = ({ handleDeleteBeer }) => {
     const navigate = useNavigate()
     const [beer, setBeer] = useState(null);
     const { beerId } = useParams();
 
     const handleEditButton = () => {
         navigate(`/beer/${beerId}/edit`)
-    }
-    const handleDeleteButton = () => {
-        handleDelete()
     }
 
     useEffect(() => {
@@ -50,7 +47,7 @@ const BeerDetail = ({ handleDelete }) => {
                         </div>
                     ))}
                     <button onClick={handleEditButton}>Edit Beer</button>
-                    <button onClick={handleDeleteButton}>Delete Beer</button>
+                    <button onClick={() => handleDeleteBeer(beer._id)}>Delete Beer</button>                    
                 </div>
             </section>
         </main>
