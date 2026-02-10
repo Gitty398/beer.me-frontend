@@ -5,18 +5,18 @@ import { useParams } from "react-router";
 import * as beerService from "../../services/beerService";
 
 const initialState = {
-  name: "",
-  image: "",
-  category: "",
-  location: [
-    {
-        address: "",
-        locationImage: "",
-        beerPrice: 0,
-        beerRating: 1,
-        notes: ""
-    }
-  ]
+    name: "",
+    image: "",
+    category: "",
+    location: [
+        {
+            address: "",
+            locationImage: "",
+            beerPrice: 0,
+            beerRating: 1,
+            notes: ""
+        }
+    ]
 };
 const BeerForm = ({ handleAddBeer, handleEditBeer }) => {
     const [formData, setFormData] = useState(initialState)
@@ -27,12 +27,29 @@ const BeerForm = ({ handleAddBeer, handleEditBeer }) => {
             const beerData = await beerService.show(beerId);
             setFormData(beerData);
         };
-        if(beerId) fetchData();
+        if (beerId) fetchData();
         return () => setFormData(initialState)
     }, [beerId]);
 
     const handleChange = (event) => {
-        setFormData({ ...formData, [event.target.name]: event.target.value });
+        const { name, value } = event.target
+        if (!name.includes('.')) {
+            // top-level field
+            setFormData((prev) => ({
+                ...prev,
+                [name]: value
+            }));
+            return;
+        }
+
+        const [parent, child] = name.split('.')
+        setFormData((prev) => ({
+            ...prev,
+            [parent]: {
+                ...prev[parent],
+                [child]: value
+            }
+        }));
     };
 
     const handleSubmit = (event) => {
@@ -54,23 +71,23 @@ const BeerForm = ({ handleAddBeer, handleEditBeer }) => {
                 <input
                     type="text"
                     id="beer-name-input"
-                    name="beer-name"
+                    name="name"
                     value={formData.name}
                     onChange={handleChange}
                 />
                 <label htmlFor="beer-image-input">Image</label>
-                <input 
+                <input
                     type="text"
                     id="beer-image-input"
-                    name="beer-image"
+                    name="image"
                     value={formData.image}
                     onChange={handleChange}
                 />
                 <label htmlFor="category-input">Category</label>
                 <select
                     required
-                    name="category"
                     id="category-input"
+                    name="category"
                     value={formData.category}
                     onChange={handleChange}
                 >
@@ -81,16 +98,16 @@ const BeerForm = ({ handleAddBeer, handleEditBeer }) => {
                 <input
                     type="text"
                     id="location-name-input"
-                    name="location-name"
-                    value={formData.location.name}
+                    name="location.name"
+                    value={formData.location[0].name}
                     onChange={handleChange}
                 />
                 <label htmlFor="location-address-input">Location Address</label>
                 <input
                     type="text"
                     id="location-address-input"
-                    name="location-address"
-                    value={formData.location.address}
+                    name="location.address"
+                    value={formData.location[0].address}
                     onChange={handleChange}
                 />
                 <label htmlFor="beer-price-input">Beer Price</label>
@@ -98,16 +115,16 @@ const BeerForm = ({ handleAddBeer, handleEditBeer }) => {
                     required
                     type="number"
                     id="beer-price-input"
-                    name="beer-price"
-                    value={formData.location.beerPrice}
+                    name="location.beerPrice"
+                    value={formData.location[0].beerPrice}
                     onChange={handleChange}
                 />
                 <label htmlFor="beer-rating-input">Beer Rating</label>
                 <select
                     required
-                    name="beer-rating"
                     id="beer-rating-input"
-                    value={formData.location.beerRating}
+                    name="locaton.beerRating"
+                    value={formData.location[0].beerRating}
                     onChange={handleChange}
                 >
                     <option value="1">1</option>
@@ -119,11 +136,14 @@ const BeerForm = ({ handleAddBeer, handleEditBeer }) => {
                 <label htmlFor="notes-input">Notes</label>
                 <textarea
                     id="notes-input"
-                    name="notes"
-                    value={formData.location.notes}
+                    name="location.notes"
+                    value={formData.location[0].notes}
                     onChange={handleChange}
-                />                
+                />
+                <button type="submit">Beer Me</button>
             </form>
         </main>
     )
 }
+
+export default BeerForm

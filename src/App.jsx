@@ -10,7 +10,7 @@ import Dashboard from './components/Dashboard/Dashboard';
 import { UserContext } from "./contexts/UserContext";
 import BeerList from './pages/BeerList/BeerList';
 import BeerDetail from './pages/BeerDetail/BeerDetail';
-// import BeerForm from './pages/BeerForm/BeerForm';
+import BeerForm from './pages/BeerForm/BeerForm';
 
 
 function App() {
@@ -38,7 +38,10 @@ function App() {
             <Route path='/beer' element={<BeerList beers={beers}/>} />
             <Route 
               path="/beer/new"
-              element={<BeerForm handleAddBeer={handleAddBeer} />}
+              element={<BeerForm 
+                handleAddBeer={handleAddBeer}
+                handleEditBeer={handleEditBeer}
+                />}
             />
             <Route
               path="/beer/:beerId"
