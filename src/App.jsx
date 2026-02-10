@@ -1,5 +1,5 @@
-import './App.css'
 import { useContext, useState, useEffect } from 'react'
+import './App.css'
 import { Routes, Route, useNavigate } from 'react-router';
 import * as beerService from './services/beerService';
 import Navbar from './components/Navbar/Navbar';
@@ -28,6 +28,52 @@ function App() {
     if (user) fetchBeers();
   }, [user]);
 
+  const handleAddBeer = async (formData) => {
+    try {
+      const newBeer = await beerService.create(formData);
+      if (newBeer.err) {
+        throw new Error(newBeer.err);
+      }
+      setBeers((prev) => [...prev, newBeer]);
+      navigate(`/beer/${newBeer._id}`);
+
+    } catch (error) {
+      console.log(error)
+    }
+  };
+
+  const handleDeleteBeer = async (beerId) => {
+    try {
+      const deletedBeer = await beerService.deleteBeer(beerId);
+      if (deletedBeer.err) {
+        throw new Error(deletedBeer.err);
+      }
+
+      setBeers(beers.filter((beer) => beer._id !== beerId));
+      navigate("/beer")
+
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  const handleEditBeer = async (formData, beerId) => {
+    try {
+      const selectedBeer = await beerService.selectedBeer(formData, beerId);
+      if (selectedBeer.err) {
+        throw new Error(selectedBeer.err)
+      }
+
+      setBeers(beers.map((b) => (b._id === beerId ? selectedBeer : b)));
+      navigate(`/beer/${beerId}`)
+
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+
+
   return (
     <>
       <Navbar />
@@ -55,7 +101,7 @@ function App() {
             <Route path='/sign-in' element={<SignInForm />} />
           </>
         )}
-        
+
       </Routes>
     </>
   )
