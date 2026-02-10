@@ -64,24 +64,24 @@ ul li {
   /* font-weight: bold; */
 }
 
-#homepage {
+/* #homepage {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-}
+} */
 
-#homepage-ul {
+/* #homepage-ul {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
-}
+} */
 
-ul li p {
+/* ul li p {
   margin: 4px 0;
   font-size: 14px;
-}
+} */
 
 a {
   text-decoration: none;
@@ -185,18 +185,18 @@ button {
   padding: 20px;
 }
 
-#search {
+/* #search {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: row;
   flex-wrap: wrap;
-}
+} */
 
-#user-ul {
+/* #user-ul {
   display: flex;
   flex-direction: row;
-}
+} */
 
 #user-card {
   display: inline-block;
