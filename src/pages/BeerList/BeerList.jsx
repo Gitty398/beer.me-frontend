@@ -2,7 +2,7 @@ import { Link } from 'react-router';
 
 const BeerList = (props) => {
   return (
-    <main>
+    <main class="beer-card">
       {props.beers.map((beer) => (
         <Link key={beer._id} to={`/beer/${beer._id}`}>
           <article>

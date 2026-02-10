@@ -49,7 +49,7 @@ const BeerForm = ({ handleAddBeer, handleEditBeer }) => {
     return (
         <main>
             <h1>{beerId ? "Edit Beer" : "New Beer"}</h1>
-            <form onSubmit={handleSubmit}>
+            <form className="new-form" onSubmit={handleSubmit}>
                 <label htmlFor="beer-name-input">Name</label>
                 <input
                     type="text"
@@ -76,7 +76,7 @@ const BeerForm = ({ handleAddBeer, handleEditBeer }) => {
                 >
                     <option value="Lager">Lager</option>
                     <option value="Ale">Ale</option>
-                </select>                
+                </select>
                 <button type="submit">Beer Me</button>
             </form>
         </main>

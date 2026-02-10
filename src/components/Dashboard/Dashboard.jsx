@@ -19,8 +19,8 @@ const Dashboard = () => {
       <p>
         This is the dashboard page where you can see a list of all the users
       </p>
-      <ul>
-        {users.map(u => <li key={u._id}>{u.username}</li>)}
+      <ul id="user-ul">
+        {users.map(u => <li id="user-card" key={u._id}>{u.username}</li>)}
       </ul>
     </main>
   );
