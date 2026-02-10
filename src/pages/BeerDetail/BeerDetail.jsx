@@ -1,11 +1,19 @@
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router';
+import { useNavigate, useParams } from 'react-router';
 import * as beerService from '../../services/beerService';
 // import BeerForm from '../BeerForm/BeerForm';
 
-const BeerDetail = () => {
+const BeerDetail = ({ handleDelete }) => {
+    const navigate = useNavigate()
     const [beer, setBeer] = useState(null);
     const { beerId } = useParams();
+
+    const handleEditButton = () => {
+        navigate(`/beer/${beerId}/edit`)
+    }
+    const handleDeleteButton = () => {
+        handleDelete()
+    }
 
     useEffect(() => {
         const fetchBeer = async () => {
@@ -40,7 +48,9 @@ const BeerDetail = () => {
                                 <p>Notes: {beer.location[index].notes}</p>
                                 <p>Last Updated on {new Date(loc.createdAt).toLocaleDateString()}</p>
                         </div>
-                    ))}                    
+                    ))}
+                    <button onClick={handleEditButton}>Edit Beer</button>
+                    <button onClick={handleDeleteButton}>Delete Beer</button>                    
                 </div>
             </section>
         </main>
