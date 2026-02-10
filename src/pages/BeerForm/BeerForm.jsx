@@ -83,4 +83,4 @@ const BeerForm = ({ handleAddBeer, handleEditBeer }) => {
     )
 }
 
-export default BeerForm
+export default BeerForm;
