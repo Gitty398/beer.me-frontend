@@ -84,7 +84,10 @@ function App() {
             <Route path='/beer' element={<BeerList beers={beers}/>} />
             <Route 
               path="/beer/new"
-              element={<BeerForm handleAddBeer={handleAddBeer} />}
+              element={<BeerForm 
+                handleAddBeer={handleAddBeer}
+                handleEditBeer={handleEditBeer}
+                />}
             />
             <Route
               path="/beer/:beerId"
