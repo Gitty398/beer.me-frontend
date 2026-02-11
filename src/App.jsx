@@ -101,10 +101,13 @@ function App() {
       const selectedBeer = await beerService.deleteLocation(beerId, locationId);
       if (selectedBeer.err) {
         throw new Error(selectedBeer.err);
+
+        const updatedBeer = selectedBeer.beer ?? selectedBeer;
       }
 
+
       setBeers(beers.map((b) => (b._id === beerId ? selectedBeer : b)));
-      navigate(`/beer/${beerId}/`)
+      navigate(`/beer/${beerId}`)
     } catch (error) {
       console.log(error)
     }
