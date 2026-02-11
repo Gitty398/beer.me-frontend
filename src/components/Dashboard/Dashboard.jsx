@@ -8,6 +8,7 @@ const Dashboard = ({ beers }) => {
   const [users, setUsers] = useState([])
 
   // const userList = users.filter((users) => users._id !== user._id)
+  const beerList = beers.filter((beer) => beer.owner === user._id)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -24,7 +25,8 @@ const Dashboard = ({ beers }) => {
         Your Beer List:
       </p>
       <ul id="user-ul">
-        {beers.map(b => <li id="user-card" key={b._id}>{b.name}</li>)}
+
+        {beerList.map(b => <li id="user-card" key={b._id}>{b.name}</li>)}
       </ul>
     </main>
   );
