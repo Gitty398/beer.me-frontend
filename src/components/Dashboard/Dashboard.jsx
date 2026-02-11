@@ -31,7 +31,9 @@ const Dashboard = ({ beers }) => {
           </p>
           <ul id="user-ul">
             {beerList.map(beer => 
-              <BeerCard beer={beer} />
+             <li key={beer._id}>
+               <BeerCard beer={beer} />
+             </li>
             )}
           </ul>
         </>
