@@ -59,7 +59,7 @@ function App() {
       }
 
       setBeers(beers.filter((beer) => beer._id !== beerId));
-      navigate("/beer")
+      navigate("/")
 
     } catch (error) {
       console.log(error)
