@@ -1,18 +1,15 @@
-import { Link } from 'react-router';
+
+import UserCard from '../../components/UserCard/UserCard';
 
 const UserList = ({ users }) => {
     return (
-        <main className="beer-card">
+        <ul>
             {users.map((u) => (
-                <Link key={u._id} to={`/users/${u._id}/beer`}>
-                    <article>
-                        <header>
-                            <h2>{u.username}</h2>
-                        </header>
-                    </article>
-                </Link>
+                <li key={u._id}>
+                    <UserCard u={u} />
+                </li>
             ))}
-        </main>
+        </ul>
     );
 };
 

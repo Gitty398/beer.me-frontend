@@ -8,9 +8,13 @@ const UsersBeerList = (props) => {
     const userBeerList = props.beers.filter((beer) => beer.owner._id === userId)
   return (
     <main>
+      <ul>
       {userBeerList.map((beer) => (
-        <BeerCard beer={beer} />
+        <li key={beer._id}>
+          <BeerCard beer={beer} />
+        </li>
       ))}
+      </ul>
     </main>
   );
 };
