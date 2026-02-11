@@ -15,6 +15,11 @@ const BeerDetail = ({ handleDeleteBeer, handleDeleteLocation, user }) => {
     const [beer, setBeer] = useState(null);
     const { beerId } = useParams();
 
+    const fetchBeer = async () => {
+            const beerData = await beerService.show(beerId);
+            setBeer(beerData);
+        };
+
     const handleEditBeerButton = () => {
         navigate(`/beer/${beerId}/edit`)
     }
@@ -27,14 +32,18 @@ const BeerDetail = ({ handleDeleteBeer, handleDeleteLocation, user }) => {
         navigate(`/beer/${beerId}/location/${locationId}/edit`)
     }
 
-    useEffect(() => {
-        const fetchBeer = async () => {
-            const beerData = await beerService.show(beerId);
-            setBeer(beerData);
-        };
-
-        fetchBeer();
-    }, [beerId]);
+     useEffect(() => {
+    fetchBeer();
+  }, [beerId]);
+       
+const onDeleteLocation = async (locationId) => {
+try {
+    await handleDeleteLocation(beerId, locationId);
+    await fetchBeer();
+  } catch (err) {
+    console.log(err);
+  }
+};
 
     if (!beer) return <main>Loading...</main>;
 
@@ -78,7 +87,7 @@ const BeerDetail = ({ handleDeleteBeer, handleDeleteLocation, user }) => {
                             {beer.owner._id === user._id && (
                                 <>
                                 <button onClick={() => handleEditLocationButton(beer._id, loc._id)}>Edit Location</button>
-                                <button onClick={() => handleDeleteLocation(beer._id, loc._id)}>Delete Location</button>
+                                <button onClick={() => onDeleteLocation(loc._id)}>Delete Location</button>
                                 </>
                             )}
                         </div>
