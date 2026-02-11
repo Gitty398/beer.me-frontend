@@ -38,13 +38,15 @@ function App() {
   
   const handleAddBeer = async (formData) => {
     try {
-      const newBeer = await beerService.create(formData);
-      if (newBeer.err) {
-        throw new Error(newBeer.err);
+      const res = await beerService.create(formData);
+      if (res.err) {
+        throw new Error(res.err);
       }
 
+      const newBeer = res.beer ?? res;
+
       setBeers((prev) => [...prev, newBeer]);
-      navigate(`/beer/${newBeer.beer._id}`);
+      navigate(`/beer/${newBeer._id}`);
 
     } catch (error) {
       console.log(error)
@@ -58,7 +60,7 @@ function App() {
         throw new Error(deletedBeer.err);
       }
 
-      setBeers(beers.filter((beer) => beer._id !== beerId));
+      setBeers(prev => prev.filter((beer) => beer._id !== beerId));
       navigate("/")
 
     } catch (error) {
@@ -68,12 +70,16 @@ function App() {
 
   const handleEditBeer = async (formData, beerId) => {
     try {
-      const selectedBeer = await beerService.updateBeer(formData, beerId);
-      if (selectedBeer.err) {
-        throw new Error(selectedBeer.err)
+      const res = await beerService.updateBeer(formData, beerId);
+      if (red.err) {
+        throw new Error(res.err)
       }
 
-      setBeers(beers.map((b) => (b._id === beerId ? selectedBeer : b)));
+      const updatedBeer = res.beer ?? res;
+
+
+      setBeers(prev => prev.map((b) => (b._id === beerId ? updatedBeer : b)));
+
       navigate(`/beer/${beerId}`)
 
     } catch (error) {
@@ -83,12 +89,15 @@ function App() {
 
   const handleAddLocation = async (formData, beerId) => {
     try {
-      const selectedBeer = await beerService.createLocation(formData, beerId);
-      if (selectedBeer.err) {
-        throw new Error(selectedBeer.err)
+      const res = await beerService.createLocation(formData, beerId);
+      if (res.err) {
+        throw new Error(res.err)
       }
 
-      setBeers(beers.map((b) => (b._id === beerId ? selectedBeer : b)));
+      const updatedBeer = res.beer ?? res;
+
+      setBeers(prev => prev.map((b) => (b._id === beerId ? updatedBeer : b)));
+
       navigate(`/beer/${beerId}`)
 
     } catch (error) {
@@ -98,15 +107,15 @@ function App() {
 
   const handleDeleteLocation = async (beerId, locationId) => {
     try {
-      const selectedBeer = await beerService.deleteLocation(beerId, locationId);
-      if (selectedBeer.err) {
-        throw new Error(selectedBeer.err);
+      const res = await beerService.deleteLocation(beerId, locationId);
+      if (res.err) {
+        throw new Error(res.err);
 
-        const updatedBeer = selectedBeer.beer ?? selectedBeer;
+        const updatedBeer = res.beer ?? res;
       }
 
 
-      setBeers(beers.map((b) => (b._id === beerId ? selectedBeer : b)));
+      setBeers(prev => prev.map((b) => (b._id === beerId ? updatedBeer : b)));
       navigate(`/beer/${beerId}`)
     } catch (error) {
       console.log(error)
@@ -115,13 +124,15 @@ function App() {
 
   const handleEditLocation = async (formData, beerId, locationId) => {
     try {
-      const selectedBeer = await beerService.updateLocation(formData, beerId, locationId);
-      if (selectedBeer.err) {
-        throw new Error(selectedBeer.err)
+      const res = await beerService.updateLocation(formData, beerId, locationId);
+      if (res.err) {
+        throw new Error(res.err)
       }
 
-      setBeers(beers.map((b) => (b._id === beerId ? selectedBeer : b)));
-      navigate(`/beer/${beerId}/`)
+      const updatedBeer = res.beer ?? res;
+
+      setBeers(prev => prev.map((b) => (b._id === beerId ? updatedBeer : b)));
+      navigate(`/beer/${beerId}`)
 
     } catch (error) {
       console.log(error)
@@ -167,10 +178,10 @@ function App() {
                 handleAddLocation={handleAddLocation}
                 />}
             />
-            <Route
+            {/* <Route
               path="/beer/:beerId/location/:locationId"
               element={<BeerDetail handleDeleteLocation={handleDeleteLocation} />}
-            />
+            /> */}
             <Route
               path="/beer/:beerId/location/:locationId/edit"
               element={<LocationForm handleEditLocation={handleEditLocation}/>}
