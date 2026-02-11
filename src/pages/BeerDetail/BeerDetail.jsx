@@ -32,18 +32,18 @@ const BeerDetail = ({ handleDeleteBeer, handleDeleteLocation, user }) => {
         navigate(`/beer/${beerId}/location/${locationId}/edit`)
     }
 
-     useEffect(() => {
-    fetchBeer();
-  }, [beerId]);
-       
-const onDeleteLocation = async (locationId) => {
-try {
-    await handleDeleteLocation(beerId, locationId);
-    await fetchBeer();
-  } catch (err) {
-    console.log(err);
-  }
-};
+    const onDeleteLocation = async (locationId) => {
+        try {
+            await handleDeleteLocation(beerId, locationId);
+            await fetchBeer();
+        } catch (err) {
+            console.log(err);
+        }
+    };
+
+    useEffect(() => {
+        fetchBeer();
+    }, [beerId]);
 
     if (!beer) return <main>Loading...</main>;
 
