@@ -1,6 +1,6 @@
 import { useContext, useState, useEffect } from 'react'
 import './App.css'
-import { Routes, Route, useNavigate } from 'react-router';
+import { Routes, Route, useNavigate, Navigate } from 'react-router';
 import * as beerService from './services/beerService';
 import Navbar from './components/Navbar/Navbar';
 import SignUpForm from './components/SignUpForm/SignUpForm';
@@ -166,6 +166,7 @@ function App() {
               path="/users/:userId/beer"
               element={<UserBeerList beers={beers} />}
             />
+             
           </>
         ) : (
           <>
@@ -173,7 +174,7 @@ function App() {
             <Route path='/sign-in' element={<SignInForm />} />
           </>
         )}
-
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </>
   )
