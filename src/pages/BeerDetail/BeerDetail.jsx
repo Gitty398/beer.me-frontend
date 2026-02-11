@@ -21,8 +21,8 @@ const BeerDetail = ({ handleDeleteBeer, handleDeleteLocation, user }) => {
 
     useEffect(() => {
         const fetchBeer = async () => {
-        const beerData = await beerService.show(beerId);
-        setBeer(beerData);
+            const beerData = await beerService.show(beerId);
+            setBeer(beerData);
         };
 
         fetchBeer();
@@ -30,7 +30,7 @@ const BeerDetail = ({ handleDeleteBeer, handleDeleteLocation, user }) => {
 
     if (!beer) return <main>Loading...</main>;
 
-    return(
+    return (
         <main>
             <section>
                 <header>
