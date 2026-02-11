@@ -2,6 +2,14 @@ import { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router';
 import * as beerService from '../../services/beerService';
 
+function lager() {
+  return <img src="../../assets/lager.jpg" alt="Lager" width={200} height={300} />;
+}
+
+function ale() {
+  return <img className="photo" src="../../assets/ale.jpg" alt="Ale" width={200} height={300} />;
+}
+
 const BeerDetail = ({ handleDeleteBeer, handleDeleteLocation, user }) => {
     const navigate = useNavigate()
     const [beer, setBeer] = useState(null);
@@ -24,18 +32,18 @@ const BeerDetail = ({ handleDeleteBeer, handleDeleteLocation, user }) => {
         navigate(`/beer/${beerId}/location/${locationId}/edit`)
     }
 
-     useEffect(() => {
-    fetchBeer();
-  }, [beerId]);
-       
-const onDeleteLocation = async (locationId) => {
-try {
-    await handleDeleteLocation(beerId, locationId);
-    await fetchBeer();
-  } catch (err) {
-    console.log(err);
-  }
-};
+    const onDeleteLocation = async (locationId) => {
+        try {
+            await handleDeleteLocation(beerId, locationId);
+            await fetchBeer();
+        } catch (err) {
+            console.log(err);
+        }
+    };
+
+    useEffect(() => {
+        fetchBeer();
+    }, [beerId]);
 
     if (!beer) return <main>Loading...</main>;
 
@@ -44,8 +52,17 @@ try {
             <section>
                 <header>
                     <h1>{beer.name}</h1>
-                    {/* Beer Image */}
-                    <p>{beer.category}</p>
+                    <h2>{beer.category}</h2>
+                    {beer.category === "Lager" && (
+                        <>
+                            {lager()}
+                        </>
+                    )}
+                    {beer.category === "Ale" && (
+                        <>
+                            {ale()}
+                        </>
+                    )}
                     <p>
                         {`${beer.owner.username} posted on
                         ${new Date(beer.createdAt).toLocaleDateString()}`}
