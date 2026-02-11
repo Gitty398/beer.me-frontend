@@ -48,14 +48,14 @@ const BeerForm = ({ handleAddBeer, handleEditBeer }) => {
                     value={formData.name}
                     onChange={handleChange}
                 />
-                <label htmlFor="beer-image-input">Image</label>
+                {/* <label htmlFor="beer-image-input">Image</label>
                 <input
                     type="text"
                     id="beer-image-input"
                     name="image"
                     value={formData.image}
                     onChange={handleChange}
-                />
+                /> */}
                 <label htmlFor="category-input">Category</label>
                 <select
                     required
