@@ -1,5 +1,3 @@
-// Thomas
-
 import { useState, useEffect } from "react";
 import { useParams } from "react-router";
 import * as beerService from "../../services/beerService";
@@ -7,17 +5,9 @@ import * as beerService from "../../services/beerService";
 const initialState = {
     name: "",
     image: "",
-    category: "",
-    location: [
-        {
-            address: "",
-            locationImage: "",
-            beerPrice: 0,
-            beerRating: 1,
-            notes: ""
-        }
-    ]
+    category: "Lager",
 };
+
 const BeerForm = ({ handleAddBeer, handleEditBeer }) => {
     const [formData, setFormData] = useState(initialState)
     const { beerId } = useParams()
@@ -49,7 +39,7 @@ const BeerForm = ({ handleAddBeer, handleEditBeer }) => {
     return (
         <main>
             <h1>{beerId ? "Edit Beer" : "New Beer"}</h1>
-            <form onSubmit={handleSubmit}>
+            <form className="new-form" onSubmit={handleSubmit}>
                 <label htmlFor="beer-name-input">Name</label>
                 <input
                     type="text"
@@ -76,7 +66,7 @@ const BeerForm = ({ handleAddBeer, handleEditBeer }) => {
                 >
                     <option value="Lager">Lager</option>
                     <option value="Ale">Ale</option>
-                </select>                
+                </select>
                 <button type="submit">Beer Me</button>
             </form>
         </main>
