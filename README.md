@@ -1,6 +1,6 @@
 
 <p align="center">
-  <img src="./assets/beerme_logo.png" alt="Beer.Me logo picturing an arm at the bar holding a beer" width="600">
+  <img src="./public/assets/beerme_logo.png" alt="Beer.Me logo picturing an arm at the bar holding a beer" width="600">
 </p>
 
 <!-- Link to the App: [Beer.Me Application Link](NEED LINK) -->
