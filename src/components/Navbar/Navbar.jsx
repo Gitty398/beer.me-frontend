@@ -19,7 +19,6 @@ const Navbar = () => {
 
         {user ? (
           <>
-
             <li>
               <Link to="/beer">All Beers</Link>
             </li>
