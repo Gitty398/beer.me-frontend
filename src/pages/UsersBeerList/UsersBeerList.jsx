@@ -10,9 +10,14 @@ const UsersBeerList = ({beers}) => {
 
   return (
     <main>
+      <ul>
       {userBeerList.map((beer) => (
-        <BeerCard key={beer._id} beer={beer} />
+        <li key={beer._id}>
+          <BeerCard beer={beer} />
+        </li>
+
       ))}
+      </ul>
     </main>
   );
 };
