@@ -19,11 +19,12 @@ const Navbar = () => {
 
         {user ? (
           <>
+
             <li>
-              <Link to="/beer/new">New Beer</Link>
+              <Link to="/beer">All Beers</Link>
             </li>
             <li>
-              <Link to="/beer">Beers</Link>
+              <Link to="/users">All Users</Link>
             </li>
             <li>
               <Link to="/" onClick={handleLogOut}>

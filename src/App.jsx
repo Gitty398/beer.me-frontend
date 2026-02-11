@@ -2,6 +2,7 @@ import { useContext, useState, useEffect } from 'react'
 import './App.css'
 import { Routes, Route, useNavigate } from 'react-router';
 import * as beerService from './services/beerService';
+import * as userService from "./services/userService";
 import Navbar from './components/Navbar/Navbar';
 import SignUpForm from './components/SignUpForm/SignUpForm';
 import SignInForm from './components/SignInForm/SignInForm';
@@ -12,18 +13,23 @@ import BeerList from './pages/BeerList/BeerList';
 import BeerDetail from './pages/BeerDetail/BeerDetail';
 import BeerForm from './pages/BeerForm/BeerForm';
 import UserBeerList from './pages/UsersBeerList/UsersBeerList'
+import UserList from "./pages/UserList/UserList"
 
 
 function App() {
   const [beers, setBeers] = useState([]);
+  const [users, setUsers] = useState([]);
   const { user } = useContext(UserContext);
   const navigate = useNavigate();
 
   useEffect(() => {
     const fetchBeers = async () => {
       const beersData = await beerService.index();
-
       setBeers(beersData);
+
+      const usersData = await userService.getAllUsers();
+      setUsers(usersData.users ?? usersData);
+
     }
 
     if (user) fetchBeers();
@@ -80,16 +86,16 @@ function App() {
     <>
       <Navbar />
       <Routes>
-        <Route path='/' element={user ? <Dashboard beers={beers}/> : <LandingPage />} />
+        <Route path='/' element={user ? <Dashboard beers={beers} /> : <LandingPage />} />
         {user ? (
           <>
-            <Route path='/beer' element={<BeerList beers={beers}/>} />
-            <Route 
+            <Route path='/beer' element={<BeerList beers={beers} />} />
+            <Route
               path="/beer/new"
-              element={<BeerForm 
+              element={<BeerForm
                 handleAddBeer={handleAddBeer}
                 handleEditBeer={handleEditBeer}
-                />}
+              />}
             />
             <Route
               path="/beer/:beerId"
@@ -97,7 +103,11 @@ function App() {
             />
             <Route
               path="/beer/:beerId/edit"
-              element={<BeerForm handleEditBeer={handleEditBeer}/>}
+              element={<BeerForm handleEditBeer={handleEditBeer} />}
+            />
+            <Route
+              path="/users"
+              element={<UserList users={users} beers={beers} />}
             />
             <Route
               path="/users/:userId/beer"

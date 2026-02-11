@@ -8,7 +8,10 @@ const Dashboard = ({ beers }) => {
   const [users, setUsers] = useState([])
 
   // const userList = users.filter((users) => users._id !== user._id)
-  const beerList = beers.filter((beer) => beer.owner === user._id)
+
+  const beerList = beers.filter(
+    (beer) => String(beer.owner?._id ?? beer.owner) === String(user?._id)
+  );
 
   useEffect(() => {
     const fetchData = async () => {
@@ -26,11 +29,37 @@ const Dashboard = ({ beers }) => {
       </p>
       <ul id="user-ul">
 
-        {beerList.map(b => <li id="user-card" key={b._id}>{b.name}</li>)}
+        {beerList.map(beer => <Link key={beer._id} to={`/beer/${beer._id}`}>
+          <article>
+            <header>
+              <h2>{beer.name}</h2>
+              <p>
+                {`${beer.owner.username} posted on
+                ${new Date(beer.createdAt).toLocaleDateString()}`}
+              </p>
+            </header>
+          </article>
+        </Link>)}
       </ul>
     </main>
   );
 };
+
+{/* <Link key={beer._id} to={`/beer/${beer._id}`}>
+  <article>
+    <header>
+      <h2>{beer.name}</h2>
+      <p>
+        {`${beer.owner.username} posted on
+                ${new Date(beer.createdAt).toLocaleDateString()}`}
+      </p>
+    </header>
+  </article>
+</Link> */}
+
+
+
+
 
 //   return (
 //     <main>
