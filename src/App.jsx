@@ -92,9 +92,9 @@ function App() {
 
   const handleDeleteLocation = async (beerId, locationId) => {
     try {
-      const deletedLocation = await beerService.deleteLocation(beerId, locationId);
-      if (deletedLocation.err) {
-        throw new Error(deletedLocation.err);
+      const selectedBeer = await beerService.deleteLocation(beerId, locationId);
+      if (selectedBeer.err) {
+        throw new Error(selectedBeer.err);
       }
 
       setBeers(beers.map((b) => (b._id === beerId ? selectedBeer : b)));
@@ -104,22 +104,20 @@ function App() {
     }
   }
 
-  const handleEditLocation = async (formData, beerId) => {
+  const handleEditLocation = async (formData, beerId, locationId) => {
     try {
-      const selectedBeer = await beerService.updateBeer(formData, beerId);
+      const selectedBeer = await beerService.updateLocation(formData, beerId, locationId);
       if (selectedBeer.err) {
         throw new Error(selectedBeer.err)
       }
 
       setBeers(beers.map((b) => (b._id === beerId ? selectedBeer : b)));
-      navigate(`/beer/${beerId}`)
+      navigate(`/beer/${beerId}/`)
 
     } catch (error) {
       console.log(error)
     }
   }
-
-
 
   return (
     <>
@@ -143,6 +141,7 @@ function App() {
                 handleAddLocation={handleAddLocation}
                 user={user}
                 handleDeleteLocation={handleDeleteLocation}
+                handleEditLocation={handleEditLocation}
               />}
             />
             <Route

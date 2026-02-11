@@ -144,3 +144,22 @@ export const deleteLocation = async (beerId, locationId) => {
         throw new Error(error.message);
     }
 };
+
+// Update Location
+export const updateLocation = async (beer, beerId, locationId) => {
+    try {
+        const res = await fetch(`${BASE_URL}/${beerId}/location/${locationId}`, {
+            method: "PUT",
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem("token")}`,
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(beer),
+        });
+        const data = await res.json();
+        
+        return data;
+    } catch (error) {
+        throw new Error(error.message);
+    }
+};

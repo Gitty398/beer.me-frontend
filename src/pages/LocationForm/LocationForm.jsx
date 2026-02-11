@@ -89,7 +89,7 @@ const LocationForm = ({ handleAddLocation, handleEditLocation }) => {
                     value={formData.notes}
                     onChange={handleChange}
                 />              
-                <button type="submit">Add Location</button>
+                <button type="submit">{locationId ? "Edit Location" : "New Location"}</button>
             </form>
         </main>
     )

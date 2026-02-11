@@ -15,7 +15,7 @@ const BeerDetail = ({ handleDeleteBeer, handleDeleteLocation, user }) => {
         navigate(`/beer/${beerId}/location/new`)
     }
 
-    const handleEditLocationButton = (locationId) => {
+    const handleEditLocationButton = (beerId, locationId) => {
         navigate(`/beer/${beerId}/location/${locationId}/edit`)
     }
 
@@ -60,7 +60,7 @@ const BeerDetail = ({ handleDeleteBeer, handleDeleteLocation, user }) => {
                                 <p>Last Updated on {new Date(loc.createdAt).toLocaleDateString()}</p>
                             {beer.owner._id === user._id && (
                                 <>
-                                <button onClick={() => handleEditLocationButton(loc._id)}>Edit Location</button>
+                                <button onClick={() => handleEditLocationButton(beer._id, loc._id)}>Edit Location</button>
                                 <button onClick={() => handleDeleteLocation(beer._id, loc._id)}>Delete Location</button>
                                 </>
                             )}
