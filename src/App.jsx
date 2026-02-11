@@ -80,7 +80,7 @@ function App() {
     <>
       <Navbar />
       <Routes>
-        <Route path='/' element={user ? <Dashboard /> : <LandingPage />} />
+        <Route path='/' element={user ? <Dashboard beers={beers}/> : <LandingPage />} />
         {user ? (
           <>
             <Route path='/beer' element={<BeerList beers={beers}/>} />
