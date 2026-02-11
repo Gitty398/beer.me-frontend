@@ -4,9 +4,13 @@ const BeerList = ({beers}) => {
   
   return (
     <main>
-      {beers.map((beer) => (
-        <BeerCard beer={beer}/>
-      ))}
+      <ul>        
+        {beers.map((beer) => (
+          <li key={beer._id}>
+            <BeerCard beer={beer}/>
+          </li>
+        ))}
+      </ul>
     </main>
   );
 };
