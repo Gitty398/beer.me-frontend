@@ -90,16 +90,15 @@ function App() {
     }
   };
 
-  const handleDeleteLocation = async (beerId) => {
+  const handleDeleteLocation = async (beerId, locationId) => {
     try {
-      const deletedBeer = await beerService.deleteBeer(beerId);
-      if (deletedBeer.err) {
-        throw new Error(deletedBeer.err);
+      const deletedLocation = await beerService.deleteLocation(beerId, locationId);
+      if (deletedLocation.err) {
+        throw new Error(deletedLocation.err);
       }
 
-      setBeers(beers.filter((beer) => beer._id !== beerId));
-      navigate("/beer")
-
+      setBeers(beers.map((b) => (b._id === beerId ? selectedBeer : b)));
+      navigate(`/beer/${beerId}/`)
     } catch (error) {
       console.log(error)
     }
@@ -143,6 +142,7 @@ function App() {
                 handleDeleteBeer={handleDeleteBeer} 
                 handleAddLocation={handleAddLocation}
                 user={user}
+                handleDeleteLocation={handleDeleteLocation}
               />}
             />
             <Route

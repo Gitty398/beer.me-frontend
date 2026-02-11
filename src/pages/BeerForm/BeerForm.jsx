@@ -5,7 +5,7 @@ import * as beerService from "../../services/beerService";
 const initialState = {
     name: "",
     image: "",
-    category: "",
+    category: "Lager",
 };
 
 const BeerForm = ({ handleAddBeer, handleEditBeer }) => {

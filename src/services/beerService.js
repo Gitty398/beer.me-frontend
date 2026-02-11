@@ -56,7 +56,6 @@ export const create = async (formData) => {
     }
 };
 
-
 // Delete Beer
 export const deleteBeer = async (beerId) => {
     try {
@@ -123,6 +122,23 @@ export const createLocation = async (formData, beerId) => {
 
         const data = await res.json();
         console.log(data);
+        return data;
+    } catch (error) {
+        throw new Error(error.message);
+    }
+};
+
+// Delete Location
+export const deleteLocation = async (beerId, locationId) => {
+    try {
+        const res = await fetch(`${BASE_URL}/${beerId}/location/${locationId}`, {
+            method: "DELETE",
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+        });
+        const data = await res.json();
+
         return data;
     } catch (error) {
         throw new Error(error.message);

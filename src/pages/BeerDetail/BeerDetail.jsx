@@ -61,7 +61,7 @@ const BeerDetail = ({ handleDeleteBeer, handleDeleteLocation, user }) => {
                             {beer.owner._id === user._id && (
                                 <>
                                 <button onClick={() => handleEditLocationButton(loc._id)}>Edit Location</button>
-                                <button onClick={() => handleDeleteLocation(loc._id)}>Delete Location</button>
+                                <button onClick={() => handleDeleteLocation(beer._id, loc._id)}>Delete Location</button>
                                 </>
                             )}
                         </div>
