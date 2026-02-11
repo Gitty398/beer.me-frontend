@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router';
 import * as beerService from '../../services/beerService';
+import LocationCard from '../../components/LocationCard/LocationCard'
 
 function lager() {
   return <img src="../../assets/lager.jpg" alt="Lager" width={200} height={300} />;
@@ -75,24 +76,19 @@ const BeerDetail = ({ handleDeleteBeer, handleDeleteLocation, user }) => {
                         </>
                     )}
                 </header>
-                <div>
+                <ul>
                     {beer.location.map((loc, index) => (
-                        <div key={loc._id}>
-                                <h3>Name: {beer.location[index].name}</h3>
-                                <p>Address: {beer.location[index].address}</p>
-                                <p>Price: {beer.location[index].beerPrice}</p>
-                                <p>Rating: {beer.location[index].beerRating}</p>
-                                <p>Notes: {beer.location[index].notes}</p>
-                                <p>Last Updated on {new Date(loc.createdAt).toLocaleDateString()}</p>
-                            {beer.owner._id === user._id && (
-                                <>
-                                <button onClick={() => handleEditLocationButton(beer._id, loc._id)}>Edit Location</button>
-                                <button onClick={() => onDeleteLocation(loc._id)}>Delete Location</button>
-                                </>
-                            )}
-                        </div>
+                        <li key={loc._id}>
+                            <LocationCard 
+                                loc={loc}
+                                onDeleteLocation={onDeleteLocation}
+                                handleEditLocationButton={handleEditLocationButton}
+                                beer={beer}
+                                user={user}                                
+                            />
+                        </li>                        
                     ))}
-                </div>
+                </ul>
             </section>
         </main>
     );
