@@ -2,6 +2,7 @@ import { useContext, useState, useEffect } from "react";
 import { UserContext } from "../../contexts/UserContext";
 import { getAllUsers } from "../../services/userService";
 import { Link } from 'react-router'
+import BeerCard from "../BeerCard/BeerCard";
 
 const Dashboard = ({ beers }) => {
   const { user } = useContext(UserContext);
@@ -28,18 +29,9 @@ const Dashboard = ({ beers }) => {
         Your Beer List:
       </p>
       <ul id="user-ul">
-
-        {beerList.map(beer => <Link key={beer._id} to={`/beer/${beer._id}`}>
-          <article>
-            <header>
-              <h2>{beer.name}</h2>
-              <p>
-                {`${beer.owner.username} posted on
-                ${new Date(beer.createdAt).toLocaleDateString()}`}
-              </p>
-            </header>
-          </article>
-        </Link>)}
+        {beerList.map(beer => 
+          <BeerCard beer={beer} />
+        )}
       </ul>
     </main>
   );
