@@ -1,5 +1,3 @@
-// Thomas
-
 import { useState, useEffect } from "react";
 import { useParams } from "react-router";
 import * as beerService from "../../services/beerService";
@@ -7,17 +5,9 @@ import * as beerService from "../../services/beerService";
 const initialState = {
     name: "",
     image: "",
-    category: "",
-    location: [
-        {
-            address: "",
-            locationImage: "",
-            beerPrice: 0,
-            beerRating: 1,
-            notes: ""
-        }
-    ]
+    category: "Lager",
 };
+
 const BeerForm = ({ handleAddBeer, handleEditBeer }) => {
     const [formData, setFormData] = useState(initialState)
     const { beerId } = useParams()
