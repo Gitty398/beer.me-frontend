@@ -19,7 +19,7 @@ const Dashboard = ({ beers }) => {
 
   return (
     <main>
-      <h1>Welcome, {user.username}</h1>
+      <h1>Welcome, {user.username}!</h1>
       <p>
         Your Beer List:
       </p>
