@@ -181,7 +181,10 @@ function App() {
             />
             <Route
               path="/users/:userId/beer"
-              element={<UserBeerList beers={beers} />}
+              element={<UserBeerList 
+                beers={beers}
+                users={users}
+                />}
             />
           </>
         ) : (
