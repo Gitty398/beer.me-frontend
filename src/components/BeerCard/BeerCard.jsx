@@ -3,7 +3,6 @@ import { Link } from "react-router"
 const BeerCard = ({ beer }) => {
 
   let beerLocName = beer.location[beer.location.length - 1];
-
     return (
         <Link key={beer._id} to={`/beer/${beer._id}`}>
           <article>

@@ -16,7 +16,6 @@ import LocationForm from './pages/LocationForm/LocationForm';
 import UserBeerList from './pages/UsersBeerList/UsersBeerList'
 import UserList from "./pages/UserList/UserList"
 
-
 function App() {
   const [beers, setBeers] = useState([]);
   const [users, setUsers] = useState([]);
@@ -71,12 +70,11 @@ function App() {
   const handleEditBeer = async (formData, beerId) => {
     try {
       const res = await beerService.updateBeer(formData, beerId);
-      if (red.err) {
+      if (res.err) {
         throw new Error(res.err)
       }
 
       const updatedBeer = res.beer ?? res;
-
 
       setBeers(prev => prev.map((b) => (b._id === beerId ? updatedBeer : b)));
 
@@ -110,10 +108,9 @@ function App() {
       const res = await beerService.deleteLocation(beerId, locationId);
       if (res.err) {
         throw new Error(res.err);
-
-        const updatedBeer = res.beer ?? res;
       }
-
+      
+      const updatedBeer = res.beer ?? res;
 
       setBeers(prev => prev.map((b) => (b._id === beerId ? updatedBeer : b)));
       navigate(`/beer/${beerId}`)
@@ -178,10 +175,6 @@ function App() {
                 handleAddLocation={handleAddLocation}
                 />}
             />
-            {/* <Route
-              path="/beer/:beerId/location/:locationId"
-              element={<BeerDetail handleDeleteLocation={handleDeleteLocation} />}
-            /> */}
             <Route
               path="/beer/:beerId/location/:locationId/edit"
               element={<LocationForm handleEditLocation={handleEditLocation}/>}
@@ -190,7 +183,6 @@ function App() {
               path="/users/:userId/beer"
               element={<UserBeerList beers={beers} />}
             />
-             
           </>
         ) : (
           <>
