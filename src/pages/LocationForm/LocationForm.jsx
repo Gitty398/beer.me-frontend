@@ -9,7 +9,7 @@ const initialState = {
     beerPrice: 0,
     beerRating: 1,
     notes: "",
-    beerCount: 0,
+    beerCount: 1,
 };
 
 const LocationForm = ({ handleAddLocation, handleEditLocation }) => {
@@ -51,6 +51,8 @@ const LocationForm = ({ handleAddLocation, handleEditLocation }) => {
                     name="name"
                     value={formData.name}
                     onChange={handleChange}
+                    minLength="3"
+                    maxLength="30"
                 />
                 <label htmlFor="location-address-input">Location Address</label>
                 <input
@@ -59,6 +61,8 @@ const LocationForm = ({ handleAddLocation, handleEditLocation }) => {
                     name="address"
                     value={formData.address}
                     onChange={handleChange}
+                    minLength="3"
+                    maxLength="30"
                 />
                 <label htmlFor="beer-count-input">Number of Beers</label>
                 <input
@@ -68,6 +72,7 @@ const LocationForm = ({ handleAddLocation, handleEditLocation }) => {
                     name="beerCount"
                     value={formData.beerCount}
                     onChange={handleChange}
+                    min="1"
                 />
                 <label htmlFor="beer-price-input">Beer Price</label>
                 <input
@@ -77,6 +82,7 @@ const LocationForm = ({ handleAddLocation, handleEditLocation }) => {
                     name="beerPrice"
                     value={formData.beerPrice}
                     onChange={handleChange}
+                    min="0"
                 />
                 <label htmlFor="beer-rating-input">Beer Rating</label>
                 <select
@@ -85,6 +91,8 @@ const LocationForm = ({ handleAddLocation, handleEditLocation }) => {
                     name="beerRating"
                     value={formData.beerRating}
                     onChange={handleChange}
+                    min="1"
+                    max="5"
                 >
                     <option value="1">1</option>
                     <option value="2">2</option>

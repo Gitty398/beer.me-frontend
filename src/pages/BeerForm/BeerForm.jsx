@@ -47,6 +47,8 @@ const BeerForm = ({ handleAddBeer, handleEditBeer }) => {
                     name="name"
                     value={formData.name}
                     onChange={handleChange}
+                    minLength="3"
+                    maxLength="30"
                 />
                 <label htmlFor="category-input"><strong>Category</strong></label>
                 <select
@@ -55,6 +57,8 @@ const BeerForm = ({ handleAddBeer, handleEditBeer }) => {
                     name="category"
                     value={formData.category}
                     onChange={handleChange}
+                    minLength="3"
+                    maxLength="30"
                 >
                     <option value="Lager">Lager</option>
                     <option value="Ale">Ale</option>
