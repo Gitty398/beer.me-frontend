@@ -7,7 +7,7 @@ const UserCard = ({ u }) => {
             <article>
                 <header className='user-card' >
                     <h3><strong>{u.username}</strong></h3>
-                    <p>{u.beerList.length} {u.beerList.length > 1 ? "Beers" : "Beer" }</p>
+                    <p>{u.beerList.length} {u.beerList.length === 1 ? "Beer" : "Beers" }</p>
                 </header>
             </article>
         </Link>
