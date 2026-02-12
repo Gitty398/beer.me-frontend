@@ -1,11 +1,13 @@
-import { Link, useParams } from 'react-router';
+import { useParams } from 'react-router';
 import BeerCard from '../../components/BeerCard/BeerCard';
 
 
 
-const UsersBeerList = (props) => {
+const UsersBeerList = ({beers}) => {
     const { userId } = useParams()
-    const userBeerList = props.beers.filter((beer) => beer.owner._id === userId)
+
+    const userBeerList = beers.filter((beer) => String(beer.owner?._id ?? beer.owner) === String(userId))
+
   return (
     <main>
       <ul>
@@ -13,6 +15,7 @@ const UsersBeerList = (props) => {
         <li key={beer._id}>
           <BeerCard beer={beer} />
         </li>
+
       ))}
       </ul>
     </main>
