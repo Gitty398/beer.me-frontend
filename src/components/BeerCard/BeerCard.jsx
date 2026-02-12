@@ -13,6 +13,7 @@ const BeerCard = ({ beer }) => {
                   {`On ${new Date(beer.createdAt).toLocaleDateString()}`}
                   {beer.location.length > 0 && beerLocName ? 
                     <>
+                    {console.log(beer)}
                       <p>{`${beer.owner.username} had ${beer.location[beer.location.length - 1].beerCount} beers`}</p>
                       <p>{` at ${beer.location[beer.location.length - 1].name}`}</p>
                     </> : <p></p>}                         
