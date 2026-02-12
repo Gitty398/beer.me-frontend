@@ -7,7 +7,7 @@ const BeerCard = ({ beer }) => {
     return (
         <Link key={beer._id} to={`/beer/${beer._id}`}>
           <article>
-            <header>
+            <header className="beer-card-container">
               <h2>{beer.name}</h2>
                 <div>
                   {`On ${new Date(beer.createdAt).toLocaleDateString()}`}
