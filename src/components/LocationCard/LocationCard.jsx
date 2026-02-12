@@ -11,7 +11,7 @@ const LocationCard = ({
             <h3>{loc.name}</h3>
             <p>{loc.address}</p>
             <p>Number of Beers: {loc.beerCount}</p>
-            <p>Price: {loc.beerPrice}</p>
+            <p>Price: ${loc.beerPrice}</p>
             <p>{loc.beerRating} ⭐</p>
             <p>Notes: {loc.notes}</p>
             <p>Last Updated on {new Date(loc.createdAt).toLocaleDateString()}</p>
