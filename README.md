@@ -1,22 +1,22 @@
 # 🍺 Beer.Me
 
-The perfect app for tracking and rating your favorite beers in your area!
+The perfect app for tracking and rating the best beers in your area!
 
 ![Beer Me Logo](./public/assets/beerme_logo.png)
 
 ## 📖 Description
 
-Beer.Me is a full-stack MERN application that allows users to log, rate, and track beers they’ve consumed at local bars and restaurants.
+Beer.Me is a full-stack MERN application that allows users to post, rate, and track beers they’ve consumed at local bars and restaurants.
 
 Users can:
 - Create an account and securely log in
-- Post beers they’ve tried
-- View all beers in their personal “Beer Cabinet”
+- Post beers they’ve consumed
+- View all beers in their personal "Beer List"
 - View detailed information about a specific beer they've added
 - Edit or delete beers they’ve posted
-- Browse other users’ beer cabinets
-- Add locations where they've had beers, including how many and how much
-- Edit or delete locations where they've posted
+- Browse other users’ Beer Lists
+- Add locations where they've drank beers, including the quantity and price
+- Edit or delete locations that they've posted
 
 _Beer.Me does not take legal responsibility for employers, significant others, family members, or any others seeing the number of beers you’ve logged._
 
@@ -27,11 +27,11 @@ _Beer.Me does not take legal responsibility for employers, significant others, f
 We created Beer.Me because all three developers share one thing in common — a love of beer.
 
 We wanted a simple way to remember:
-- Which bars served the nectar of the gods 🍺
+- Which bars served *the nectar of the gods* 🍺
 - Which ones charged too much
 - Which ones were serving suspiciously skunky drafts
 
-Beer.Me helps users make better bar-hopping decisions based on real experiences.
+Beer.Me helps users make better bar-hopping decisions based on real-time experiences.
 
 ---
 
@@ -71,7 +71,10 @@ Beer.Me helps users make better bar-hopping decisions based on real experiences.
 ### Tools & Deployment
 - Git & GitHub
 - VS Code
-- AWS
+- AWS Amplify
+- AWS Elastic Beanstalk
+- AWS EC2
+- AWS CloudFront
 
 ---
 
