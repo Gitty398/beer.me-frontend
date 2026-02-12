@@ -37,10 +37,10 @@ const BeerForm = ({ handleAddBeer, handleEditBeer }) => {
     };
 
     return (
-        <main>
+        <main className="form-box">
             <h1>{beerId ? "Edit Beer" : "New Beer"}</h1>
             <form className="new-form" onSubmit={handleSubmit}>
-                <label htmlFor="beer-name-input">Name</label>
+                <label htmlFor="beer-name-input"><strong>Name</strong></label>
                 <input
                     type="text"
                     id="beer-name-input"
@@ -56,7 +56,7 @@ const BeerForm = ({ handleAddBeer, handleEditBeer }) => {
                     value={formData.image}
                     onChange={handleChange}
                 /> */}
-                <label htmlFor="category-input">Category</label>
+                <label htmlFor="category-input"><strong>Category</strong></label>
                 <select
                     required
                     id="category-input"
@@ -67,7 +67,7 @@ const BeerForm = ({ handleAddBeer, handleEditBeer }) => {
                     <option value="Lager">Lager</option>
                     <option value="Ale">Ale</option>
                 </select>
-                <button type="submit">Beer Me</button>
+                <button className="form-button" type="submit">Beer Me</button>
             </form>
         </main>
     )

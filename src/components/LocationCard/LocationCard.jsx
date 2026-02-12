@@ -9,11 +9,11 @@ const LocationCard = ({
 }) => {
 
     return (
-        <div key={loc._id}>
-            <h3>Name: {loc.name}</h3>
-            <p>Address: {loc.address}</p>
+        <div className="location-card" key={loc._id}>
+            <h3>{loc.name}</h3>
+            <p>{loc.address}</p>
             <p>Price: {loc.beerPrice}</p>
-            <p>Rating: {loc.beerRating}</p>
+            <p>{loc.beerRating} ⭐</p>
             <p>Notes: {loc.notes}</p>
             <p>Last Updated on {new Date(loc.createdAt).toLocaleDateString()}</p>
             {beer.owner._id === user._id && (
