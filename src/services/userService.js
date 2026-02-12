@@ -14,7 +14,4 @@ const getAllUsers = async () => {
     }
 }
 
-
-export {
-    getAllUsers
-}
+export { getAllUsers }
