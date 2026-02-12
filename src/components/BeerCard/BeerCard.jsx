@@ -9,11 +9,11 @@ const BeerCard = ({ beer }) => {
           <article>
             <header className="beer-card-container">
               <h2>{beer.name}</h2>
+              <p><strong>Recent Activity</strong></p>
                 <div>
                   {`On ${new Date(beer.createdAt).toLocaleDateString()}`}
                   {beer.location.length > 0 && beerLocName ? 
                     <>
-                    {console.log(beer)}
                       <p>{`${beer.owner.username} had ${beer.location[beer.location.length - 1].beerCount} beers`}</p>
                       <p>{` at ${beer.location[beer.location.length - 1].name}`}</p>
                     </> : <p></p>}                         
