@@ -48,6 +48,7 @@ const SignUpForm = () => {
             name="username"
             onChange={handleChange}
             required
+            maxlength="20"
           />
         </div>
         <div>
