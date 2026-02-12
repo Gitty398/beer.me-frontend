@@ -40,9 +40,9 @@ const LocationForm = ({ handleAddLocation, handleEditLocation }) => {
     };
 
     return (
-        <main>
+        <main className="form-box" >
             <h1>{locationId ? "Edit Location" : "New Location"}</h1>
-            <form onSubmit={handleSubmit}>
+            <form className="new-form" onSubmit={handleSubmit}>
                 <label htmlFor="location-name-input">Location Name</label>
                 <input
                     type="text"
@@ -89,7 +89,7 @@ const LocationForm = ({ handleAddLocation, handleEditLocation }) => {
                     value={formData.notes}
                     onChange={handleChange}
                 />              
-                <button type="submit">{locationId ? "Edit Location" : "New Location"}</button>
+                <button className="form-button" type="submit">{locationId ? "Edit Location" : "New Location"}</button>
             </form>
         </main>
     )
