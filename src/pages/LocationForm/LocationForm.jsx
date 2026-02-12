@@ -8,7 +8,8 @@ const initialState = {
     locationImage: "",
     beerPrice: 0,
     beerRating: 1,
-    notes: ""
+    notes: "",
+    beerCount: 0,
 };
 
 const LocationForm = ({ handleAddLocation, handleEditLocation }) => {
@@ -57,6 +58,15 @@ const LocationForm = ({ handleAddLocation, handleEditLocation }) => {
                     id="location-address-input"
                     name="address"
                     value={formData.address}
+                    onChange={handleChange}
+                />
+                <label htmlFor="beer-count-input">Number of Beers</label>
+                <input
+                    required
+                    type="number"
+                    id="beer-count-input"
+                    name="beerCount"
+                    value={formData.beerCount}
                     onChange={handleChange}
                 />
                 <label htmlFor="beer-price-input">Beer Price</label>

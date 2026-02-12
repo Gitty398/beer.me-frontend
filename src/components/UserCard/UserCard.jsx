@@ -11,7 +11,6 @@ const UserCard = ({ u }) => {
                 </header>
             </article>
         </Link>
-
     )
 }
 
