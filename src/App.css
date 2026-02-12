@@ -126,8 +126,9 @@ button {
 .user-card {
   display: flex;
   flex-direction: column;
-  height: 150px;
+  height: 200px;
   width: 180px;
+  overflow-wrap: break-word;
 }
 
 .location-card {
@@ -152,11 +153,13 @@ button {
   justify-content: center;
   height: 200px;
   width: 200px;
+  overflow-wrap: break-word;
 }
 
 .location-button {
   padding: 10px 50px;
 }
+
 .form-box {
   display: flex;
   flex-direction: column;
