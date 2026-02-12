@@ -1,39 +1,91 @@
+# 🍺 Beer.Me
 
-<p align="center">
-  <img src="./public/assets/beerme_logo.png" alt="Beer.Me logo picturing an arm at the bar holding a beer" width="600">
-</p>
+The perfect app for tracking and rating your favorite beers in your area!
 
-<!-- Link to the App: [Beer.Me Application Link](NEED LINK) -->
+![Beer Me Logo](./public/assets/beerme_logo.png)
 
-# Beer.Me
+## 📖 Description
 
-The perfect app for finding the freshest, crispiest, hoppiest beer in your area!
+Beer.Me is a full-stack MERN application that allows users to log, rate, and track beers they’ve consumed at local bars and restaurants.
 
-<!-- [Landing page of the Beer.Me App](NEED GUI PIC) -->
+Users can:
+- Create an account and securely log in
+- Post beers they’ve tried
+- View all beers in their personal “Beer Cabinet”
+- View detailed information about a specific beer they've added
+- Edit or delete beers they’ve posted
+- Browse other users’ beer cabinets
+- Add locations where they've had beers, including how many and how much
+- Edit or delete locations where they've posted
 
-**Description**
+_Beer.Me does not take legal responsibility for employers, significant others, family members, or any others seeing the number of beers you’ve logged._
 
-* Beer.Me is an app where users can post and track beers that they have consumed from establishments in their local area. If knowledge is power then our app will empower our users to know where the freshest, crispiest, and cheapest beers are
-in their neighborhoods.
+---
 
-* Users can create posts for beers that they have consumed or view beers from other users on the app. If a user's memory was *altered* while creating a post, users can update or delete any post that they have created.
+## 🧠 Background
 
-* Beer.me does not take any legal responsibility from employers, significant others, or family members seeing the numnber of beers that you have been drinking.
+We created Beer.Me because all three developers share one thing in common — a love of beer.
 
-# Background Info
+We wanted a simple way to remember:
+- Which bars served the nectar of the gods 🍺
+- Which ones charged too much
+- Which ones were serving suspiciously skunky drafts
 
-* We chose to create this application as all three developers have the same thing in common....our love of beer! By knowing which bars/ restaurants are serving overpriced, stale/ skunk beer and which were serving the nectar of the gods, we could adjust our bar-hopping locales accordingly.
+Beer.Me helps users make better bar-hopping decisions based on real experiences.
 
-<!-- [Beer.Me ERD](NEED ERD PIC) -->
+---
 
-# Technologies Used
+![Beer Me Landing](./public/assets/beerme_landing.png)
 
-* React, JavaScript, HTML, CSS, VS Code, EJS, Node.js, Express.js, Mongoose, MongoDB, and AWS. Also, credit to OpenAI for generating the Beer.Me logo and helping me debug some roadblocks during the coding process.
+## 🚀 Getting Started
 
-# Attributions
+### 🔗 Deployed App
+[Click here to use Beer.Me](https://main.d1yyzdi58s6yy8.amplifyapp.com/)
 
-* 
+### 📋 Planning Materials
+- [Trello Board](https://trello.com/b/4XK2wD6W)
+- [ERD](https://dbdiagram.io/d/Beer-Me-6986660bbd82f5fce2efd18c)
+- [Wireframes (Found on Trello Board)](https://trello.com/b/4XK2wD6W)
 
-# Next Steps/ Stretch Goals
+### 🛠 Back-End Repository
+[Back-End GitHub Repo](https://github.com/Gitty398/beer.me-backend)
 
-* The next steps for the app....
+---
+
+## 🧰 Technologies Used
+
+### Frontend
+- React
+- JavaScript 
+- HTML
+- CSS
+
+### Backend
+- Node.js
+- Express.js
+- MongoDB
+- Mongoose
+- JWT Authentication
+- bcrypt
+
+### Tools & Deployment
+- Git & GitHub
+- VS Code
+- AWS
+
+---
+
+## 🙏 Attributions
+
+- OpenAI (ChatGPT) — logo generation
+
+---
+
+## 🔮 Next Steps / Stretch Goals
+
+- Add comments on other users’ beer posts
+- Add beer image uploads
+- Implement average ratings across users
+- Add search & filter functionality (by brewery, style, price)
+- Add a favorites feature
+- Improve mobile accessibility
