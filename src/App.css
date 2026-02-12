@@ -205,6 +205,14 @@ button {
   padding: 8px;
   border-radius: 8px;
   font-size: 15px;
+  text-align: center;
+}
+
+#beer-count-input {
+  padding: 8px;
+  border-radius: 8px;
+  font-size: 15px;
+  text-align: center;
 }
 
 #location-address-input {
