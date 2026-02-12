@@ -13,12 +13,13 @@ const Navbar = () => {
   return (
     <nav id="nav-section">
       <ul>
-        <li>
-          <Link to="/">My Beer List</Link>
-        </li>
+        
 
         {user ? (
           <>
+            <li>
+              <Link to="/">My Beer List</Link>
+            </li>
             <li>
               <Link to="/beer">All Beers</Link>
             </li>
@@ -33,6 +34,9 @@ const Navbar = () => {
           </>
         ) : (
           <>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
             <li>
               <Link to="/sign-up">Sign Up</Link>
             </li>

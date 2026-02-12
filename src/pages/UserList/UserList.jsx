@@ -11,13 +11,16 @@ const UserList = ({users}) => {
     const filteredUsers = users.filter((u)=> String(u._id) !== String(user._id))
     
     return (
-        <ul>
-            {users.map((u) => (
-                <li key={u._id}>
-                    <UserCard u={u} />
-                </li>
-            ))}
-        </ul>
+        <div>
+            <h2>All Users</h2>
+            <ul>
+                {users.map((u) => (
+                    <li key={u._id}>
+                        <UserCard u={u} />
+                    </li>
+                ))}
+            </ul>
+        </div>
     );
 };
 

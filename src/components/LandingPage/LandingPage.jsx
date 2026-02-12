@@ -8,7 +8,7 @@ const LandingPage = () => {
       <p>The ultimate beer tracker!</p>
       <hr />
       <p>
-        Rate see and disscuss beer
+        Rate see and discuss beer
       </p>
     </div>
   );
