@@ -13,8 +13,6 @@ const Navbar = () => {
   return (
     <nav id="nav-section">
       <ul>
-        
-
         {user ? (
           <>
             <li>

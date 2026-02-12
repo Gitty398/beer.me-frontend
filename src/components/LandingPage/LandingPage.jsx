@@ -7,9 +7,7 @@ const LandingPage = () => {
 
       <p>The ultimate beer tracker!</p>
       <hr />
-      <p>
-        Rate see and discuss beer
-      </p>
+      <p>Track and rate your favorite beers!</p>
     </div>
   );
 };

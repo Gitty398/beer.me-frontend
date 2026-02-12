@@ -4,17 +4,11 @@ import * as beerService from '../../services/beerService';
 import LocationCard from '../../components/LocationCard/LocationCard'
 
 function lager() {
-  return 
-    <img className='photo' src="../../assets/lager.jpg" alt="Lager" width={200} height={300} />;
+  return <img className='photo' src="../../assets/lager.jpg" alt="Lager" width={200} height={300} />;
 }
 
 function ale() {
-  return <img className="photo" src="../../assets/ale.jpg" alt="Ale" width={200} height={300} />
-    
-
-      
-    
-  
+  return <img className="photo" src="../../assets/ale.jpg" alt="Ale" width={200} height={300} />;
 }
 
 const BeerDetail = ({ handleDeleteBeer, handleDeleteLocation, user }) => {

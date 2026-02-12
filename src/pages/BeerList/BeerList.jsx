@@ -1,7 +1,6 @@
 import BeerCard from "../../components/BeerCard/BeerCard";
 
 const BeerList = ({beers}) => {
-  
   return (
     <main>
       <ul>        

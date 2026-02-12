@@ -77,7 +77,6 @@ function App() {
 
       const updatedBeer = res.beer ?? res;
 
-
       setBeers(prev => prev.map((b) => (b._id === beerId ? updatedBeer : b)));
 
       navigate(`/beer/${beerId}`)
@@ -110,10 +109,9 @@ function App() {
       const res = await beerService.deleteLocation(beerId, locationId);
       if (res.err) {
         throw new Error(res.err);
-
-        const updatedBeer = res.beer ?? res;
       }
-
+      
+      const updatedBeer = res.beer ?? res;
 
       setBeers(prev => prev.map((b) => (b._id === beerId ? updatedBeer : b)));
       navigate(`/beer/${beerId}`)
@@ -190,7 +188,6 @@ function App() {
               path="/users/:userId/beer"
               element={<UserBeerList beers={beers} />}
             />
-             
           </>
         ) : (
           <>
