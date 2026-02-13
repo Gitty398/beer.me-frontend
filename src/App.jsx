@@ -58,9 +58,10 @@ function App() {
       if (res.err) {
         throw new Error(res.err);
       }
-      const deletedBeer = res.beer ?? res;
 
-      setBeers(prev => prev.filter((beer) => beer._id !== beerId ? deletedBeer : beer));
+      setBeers(prev =>
+        prev.filter((beer) => beer._id !== beerId)
+      );
       navigate("/")
 
     } catch (error) {
