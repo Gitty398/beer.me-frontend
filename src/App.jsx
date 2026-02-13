@@ -54,12 +54,13 @@ function App() {
 
   const handleDeleteBeer = async (beerId) => {
     try {
-      const deletedBeer = await beerService.deleteBeer(beerId);
-      if (deletedBeer.err) {
-        throw new Error(deletedBeer.err);
+      const res = await beerService.deleteBeer(beerId);
+      if (res.err) {
+        throw new Error(res.err);
       }
+      const deletedBeer = res.beer ?? res;
 
-      setBeers(prev => prev.filter((beer) => beer._id !== beerId));
+      setBeers(prev => prev.filter((beer) => beer._id !== beerId ? deletedBeer : beer));
       navigate("/")
 
     } catch (error) {
