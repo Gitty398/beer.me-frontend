@@ -33,8 +33,8 @@ function App() {
     }
 
     if (user) fetchBeers();
-  }, [user]);
-  
+  }, [user, beers]);
+
   const handleAddBeer = async (formData) => {
     try {
       const res = await beerService.create(formData);
@@ -109,7 +109,7 @@ function App() {
       if (res.err) {
         throw new Error(res.err);
       }
-      
+
       const updatedBeer = res.beer ?? res;
 
       setBeers(prev => prev.map((b) => (b._id === beerId ? updatedBeer : b)));
@@ -153,8 +153,8 @@ function App() {
             />
             <Route
               path="/beer/:beerId"
-              element={<BeerDetail 
-                handleDeleteBeer={handleDeleteBeer} 
+              element={<BeerDetail
+                handleDeleteBeer={handleDeleteBeer}
                 handleAddLocation={handleAddLocation}
                 user={user}
                 handleDeleteLocation={handleDeleteLocation}
@@ -169,22 +169,22 @@ function App() {
               path="/users"
               element={<UserList users={users} beers={beers} />}
             />
-            <Route 
+            <Route
               path="/beer/:beerId/location/new"
-              element={<LocationForm 
+              element={<LocationForm
                 handleAddLocation={handleAddLocation}
-                />}
+              />}
             />
             <Route
               path="/beer/:beerId/location/:locationId/edit"
-              element={<LocationForm handleEditLocation={handleEditLocation}/>}
+              element={<LocationForm handleEditLocation={handleEditLocation} />}
             />
             <Route
               path="/users/:userId/beer"
-              element={<UserBeerList 
+              element={<UserBeerList
                 beers={beers}
                 users={users}
-                />}
+              />}
             />
           </>
         ) : (
