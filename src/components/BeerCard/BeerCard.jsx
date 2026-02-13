@@ -16,7 +16,7 @@ const BeerCard = ({ beer }) => {
                       <p>{`${beer.owner.username} had ${beer.location[beer.location.length - 1].beerCount} `}{beer.location[beer.location.length - 1].beerCount === 1 ? "Beer" : "Beers" }</p>
                       <p>{` at ${beer.location[beer.location.length - 1].name}`}</p>
                       <p>{`On ${new Date(beer.createdAt).toLocaleDateString()}`}</p>
-                    </> : <p>No recent locations</p>}                         
+                    </> : <p>{beer.owner.username} has no recent locations</p>}                         
                 </div>
             </header>
           </article>
