@@ -52,7 +52,7 @@ const LocationForm = ({ handleAddLocation, handleEditLocation }) => {
                     value={formData.name}
                     onChange={handleChange}
                     minLength="3"
-                    maxLength="30"
+                    maxLength="50"
                 />
                 <label htmlFor="location-address-input">Location Address</label>
                 <input
@@ -62,7 +62,7 @@ const LocationForm = ({ handleAddLocation, handleEditLocation }) => {
                     value={formData.address}
                     onChange={handleChange}
                     minLength="3"
-                    maxLength="30"
+                    maxLength="100"
                 />
                 <label htmlFor="beer-count-input">Number of Beers</label>
                 <input
