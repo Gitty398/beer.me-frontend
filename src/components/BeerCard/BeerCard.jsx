@@ -9,14 +9,14 @@ const BeerCard = ({ beer }) => {
           <article>
             <header className="beer-card-container">
               <h2>{beer.name}</h2>
-              <p><strong>Recent Activity</strong></p>
+              <p><strong><u>Recent Activity</u></strong></p>
                 <div>
-                  {`On ${new Date(beer.createdAt).toLocaleDateString()}`}
                   {beer.location.length > 0 && beerLocName ? 
                     <>
-                      <p>{`${beer.owner.username} had ${beer.location[beer.location.length - 1].beerCount} beers`}</p>
+                      <p>{`${beer.owner.username} had ${beer.location[beer.location.length - 1].beerCount} `}{beer.location[beer.location.length - 1].beerCount === 1 ? "Beer" : "Beers" }</p>
                       <p>{` at ${beer.location[beer.location.length - 1].name}`}</p>
-                    </> : <p></p>}                         
+                      <p>{`On ${new Date(beer.createdAt).toLocaleDateString()}`}</p>
+                    </> : <p>No recent locations</p>}                         
                 </div>
             </header>
           </article>
