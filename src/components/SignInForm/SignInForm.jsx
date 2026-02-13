@@ -22,7 +22,9 @@ const SignInForm = () => {
     try {
       const signedInUser = await signIn(formData);
       setUser(signedInUser);
-      navigate('/');
+      setTimeout(() => {
+        navigate("/");
+      }, 3000);
     } catch (error) {
       setMessage(error.message);
     }

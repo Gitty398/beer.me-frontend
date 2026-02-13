@@ -5,7 +5,7 @@ const BeerCard = ({ beer }) => {
   let beerLocName = beer.location[beer.location.length - 1]
   
     return (
-        <Link key={beer._id} to={`/beer/${beer._id}`}>
+        <Link to={`/beer/${beer._id}`}>
           <article>
             <header className="beer-card-container">
               <h2>{beer.name}</h2>
@@ -16,7 +16,7 @@ const BeerCard = ({ beer }) => {
                     <>
                       <p>{`${beer.owner.username} had ${beer.location[beer.location.length - 1].beerCount} beers`}</p>
                       <p>{` at ${beer.location[beer.location.length - 1].name}`}</p>
-                    </> : <p></p>}                         
+                    </> : null}                         
                 </div>
             </header>
           </article>
