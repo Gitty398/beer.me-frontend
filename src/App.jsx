@@ -33,7 +33,7 @@ function App() {
     }
 
     if (user) fetchBeers();
-  }, [user, beers]);
+  }, [user]);
 
   const handleAddBeer = async (formData) => {
     try {
