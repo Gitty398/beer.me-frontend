@@ -6,7 +6,7 @@ const initialState = {
     name: "",
     address: "",
     locationImage: "",
-    beerPrice: 0,
+    beerPrice: 0.00,
     beerRating: 1,
     notes: "",
     beerCount: 1,
@@ -83,6 +83,7 @@ const LocationForm = ({ handleAddLocation, handleEditLocation }) => {
                     value={formData.beerPrice}
                     onChange={handleChange}
                     min="0"
+                    step="0.01"
                 />
                 <label htmlFor="beer-rating-input">Beer Rating</label>
                 <select
